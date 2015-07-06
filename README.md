@@ -1,1 +1,2 @@
 #wxCourse
+convenient online study
