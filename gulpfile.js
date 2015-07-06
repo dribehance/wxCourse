@@ -177,7 +177,7 @@ gulp.task('html', function() {
 ======================================================================*/
 
 gulp.task('less', function () {
-  gulp.src(['./src/less/app.less')
+  gulp.src(['./src/less/app.less'])
     .pipe(less({
       paths: [ path.resolve(__dirname, 'src/less'), path.resolve(__dirname, 'bower_components') ]
     }))
