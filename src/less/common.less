@@ -1,0 +1,99 @@
+.block {
+	display: block;
+}
+.full-width {
+	width: 100%;
+}
+// text color
+.text-white {
+	color: @white;
+}
+.text-black {
+	color: @black;
+}
+.text-grey {
+	color: @grey;
+}
+.text-red {
+	color: @red;
+}
+// text size
+.text-very-large {
+	font-size: 30px;
+}
+.text-very-big {
+	font-size: 24px;
+}
+.text-large {
+	font-size: 18px;
+}
+.text-small {
+	font-size: 14px;
+}
+// bg color
+.bg-red {
+	background-color: @red;
+}
+.bg-grey {
+	background-color: @grey;
+}
+.clearfixed {
+	&:before,&:after {
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+// layout
+// one fix whie the other auto
+.semi-auto {
+	display: block;
+	position: relative;
+	&.semi-right-40 {
+		padding-right: 40px;
+	}
+	.semi-fixed-left {
+		display: block;	
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.semi-fixed-right {
+		display: block;	
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}
+// handle bootstrap grid
+.col-condensed {
+	padding-left: 0;
+	padding-right:0;
+}
+// no radius 
+.rectangle {
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+.border-radius-large {
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+}
+.bordered {
+	border: 1px solid;
+}
+.nowrap {
+	white-space: nowrap;
+}

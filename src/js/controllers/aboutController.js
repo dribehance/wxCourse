@@ -1,0 +1,3 @@
+var aboutController = function($scope) {
+	
+}

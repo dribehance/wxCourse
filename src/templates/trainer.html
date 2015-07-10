@@ -1,0 +1,111 @@
+<div ui-content-for="title">我要开班</div>
+<div ui-content-for="backAction">
+    <span class="btn" ng-click="back()">返回</span>
+</div>
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section bg-red text-white text-center">
+            <div class="avatar avatar-lg">
+                <img ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
+            </div>
+            <p></p>
+            <p>类别：{{ trainer.type }}<i ng-click="edit({'type':trainer.type})" class="kk kk-24 kk-edit-2"></i>
+            </p>
+            <p>{{ trainer.name }}<i ng-click="edit({'name':trainer.name})" class="kk kk-24 kk-edit-2"></i>
+            </p>
+            <a ng-href="#/exit" class="btn text-white bg-red bordered">退出</a>
+        </div>
+        <div class="intro">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">简介</span>
+                    <div class="semi-fixed-right">
+                        <a ng-click="edit({'intro':trainer.intro})">
+                            <i class="kk kk-24 kk-edit-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section">{{ trainer.intro }}</div>
+        </div>
+        <div class="kk-line kk-horizon"></div>
+        <div class="address">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">地址：</span>
+                    <span>{{ trainer.address }}</span>
+                    <div class="semi-fixed-right">
+                        <a ng-click="edit({'contact':trainer.contact})">
+                            <i class="kk kk-24 kk-edit-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="contact">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">联系人：</span>
+                    <span>{{ trainer.contact }}</span>
+                    <div class="semi-fixed-right">
+                        <a ng-click="edit({'contact':trainer.contact})">
+                            <i class="kk kk-24 kk-edit-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="address">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">联系方式：</span>
+                    <span>{{ trainer.telephone }}</span>
+                    <div class="semi-fixed-right">
+                        <a ng-click="edit({'telephone':trainer.telephone})">
+                            <i class="kk kk-24 kk-edit-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+    </div>
+    <div class="scrollable-footer">
+        <div class="section bg-grey section-wide section-sm">
+            <div class="btn-group justified split">
+                <a ng-href="#/release-course" class="btn btn-navbar text-white">发布课程</a>
+                <a ng-href="#/courses" class="btn btn-navbar text-white">课程列表</a>
+                <a ng-href="#/teachers" class="btn btn-navbar text-white">老师列表</a>
+                <a ng-href="#/message" class="btn btn-navbar text-white">消息提醒</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ui-content-for="modals">
+    <div class="modal modal-overlay" ui-if='editable_panel' ui-state='editable_panel'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" ng-submit="ajaxForm(this)">
+                    <div class="modal-header">
+                        <button class="close" ui-turn-off="editable_panel">&times;</button>
+                        <h4 class="modal-title">编辑信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="editable_content" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button ui-turn-off="editable_panel" class="btn btn-default">取消</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

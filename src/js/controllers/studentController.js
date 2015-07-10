@@ -1,0 +1,3 @@
+var studentController = function($scope) {
+	
+}
