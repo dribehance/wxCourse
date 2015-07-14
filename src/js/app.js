@@ -4,9 +4,10 @@ angular.module('WxCourse', [
     "mobile-angular-ui.core.capture",
     "mobile-angular-ui.core.activeLinks",
     "mobile-angular-ui.core.sharedState",
+    "flow",
 ])
 
-.config(function($routeProvider) {
+.config(function($routeProvider,flowFactoryProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'home.html',
@@ -26,6 +27,11 @@ angular.module('WxCourse', [
             templateUrl: 'about.html',
             reloadOnSearch: false,
             controller: aboutController
+        })
+        .when('/release_course', {
+            templateUrl: 'release_course.html',
+            reloadOnSearch: false,
+            controller: releaseCourseController
         });
 }).run(function(appServices) {
     // init event such as routechangestart...

@@ -5,9 +5,15 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div class="section bg-red text-white text-center">
-            <div class="avatar avatar-lg">
-                <img ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
+            <div class="avatar avatar-lg" flow-init ng-controller="uploadController">
+                <div flow-btn class="flow-btn"></div>
+                <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
             </div>
+            <!-- <div class="avatar avatar-lg" flow-init>
+                <div></div>
+                <img flow-img="$flow.files[0]"  flow-btn ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
+                <button type="button" ng-click="upload($flow)">上传</button>
+            </div> -->
             <p></p>
             <p>类别：{{ trainer.type }}<i ng-click="edit({'type':trainer.type})" class="kk kk-24 kk-edit-2"></i>
             </p>
@@ -80,7 +86,7 @@
     <div class="scrollable-footer">
         <div class="section bg-grey section-wide section-sm">
             <div class="btn-group justified split">
-                <a ng-href="#/release-course" class="btn btn-navbar text-white">发布课程</a>
+                <a ng-href="#/release_course" class="btn btn-navbar text-white">发布课程</a>
                 <a ng-href="#/courses" class="btn btn-navbar text-white">课程列表</a>
                 <a ng-href="#/teachers" class="btn btn-navbar text-white">老师列表</a>
                 <a ng-href="#/message" class="btn btn-navbar text-white">消息提醒</a>

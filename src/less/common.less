@@ -1,10 +1,4 @@
-.block {
-	display: block;
-}
-.full-width {
-	width: 100%;
-}
-// text color
+// ----------------------------text color---------------------------- //
 .text-white {
 	color: @white;
 }
@@ -17,7 +11,7 @@
 .text-red {
 	color: @red;
 }
-// text size
+// ----------------------------text size---------------------------- //
 .text-very-large {
 	font-size: 30px;
 }
@@ -30,13 +24,36 @@
 .text-small {
 	font-size: 14px;
 }
-// bg color
+// ----------------------------text align---------------------------- //
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+// ----------------------------text ellipsis---------------------------- //
+.text-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.nowrap {
+	white-space: nowrap;
+}
+// ----------------------------bg   color---------------------------- //
+.bg-white {
+	background-color: white;
+}
 .bg-red {
 	background-color: @red;
 }
 .bg-grey {
 	background-color: @grey;
 }
+.bg-light-grey {
+	background-color: @lightGrey;
+}
+// ----------------------------layout   ---------------------------- //
 .clearfixed {
 	&:before,&:after {
 		display: table;
@@ -45,24 +62,49 @@
 		clear: both;
 	}
 }
-.text-center {
-	text-align: center;
+.block {
+	display: block;
 }
-.text-left {
-	text-align: left;
+.full-width {
+	width: 100%;
 }
-.text-ellipsis {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-// layout
-// one fix whie the other auto
 .semi-auto {
 	display: block;
 	position: relative;
+	min-height: 20px;
+	&.semi-icon-bar {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
 	&.semi-right-40 {
 		padding-right: 40px;
+	}
+	&.semi-left-50 {
+		padding-left: 50px;
+	}
+	&.semi-right-50 {
+		padding-right: 50px;
+	}
+	&.semi-left-70 {
+		padding-left: 70px;
+	}
+	&.semi-left-80 {
+		padding-left: 80px;
+	}
+	&.semi-right-80 {
+		padding-right: 80px;
+	}
+	.semi-wide-40 {
+		width: 40px;
+	}
+	.semi-wide-50 {
+		width: 50px;
+	}
+	.semi-wide-70 {
+		width: 70px;
+	}
+	.semi-wide-80 {
+		width: 80px;
 	}
 	.semi-fixed-left {
 		display: block;	
@@ -75,25 +117,8 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+		&.semi-icon {
+			top: 4px;
+		}
 	}
-}
-// handle bootstrap grid
-.col-condensed {
-	padding-left: 0;
-	padding-right:0;
-}
-// no radius 
-.rectangle {
-	-webkit-border-radius: 0 !important;
-	border-radius: 0 !important;
-}
-.border-radius-large {
-	-webkit-border-radius: 4px !important;
-	border-radius: 4px !important;
-}
-.bordered {
-	border: 1px solid;
-}
-.nowrap {
-	white-space: nowrap;
 }

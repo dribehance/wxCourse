@@ -15,7 +15,4 @@ var trainerController = function($scope, trainerServices, errorServices, toastSe
         }
     	SharedState.turnOn("editable_panel");
     }
-    $scope.ajaxForm = function() {
-
-    }
 }

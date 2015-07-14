@@ -39,8 +39,8 @@ var _m_course = function() {
     // intro 课程简介
     return {
         "id": "",
-        "name": "",
-        "type": "",
+        "name": "小学语文",
+        "type": "语文",
 
         "capacity": "",
         "apply_amount": "0",
@@ -54,7 +54,7 @@ var _m_course = function() {
 
         "from": "",
         "to": "",
-        "repeat": "",
+        "repeat": "0",
         "time": [],
         "address": "",
         "money": "",
