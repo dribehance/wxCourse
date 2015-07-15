@@ -33,6 +33,9 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: releaseCourseController
         });
+        // flowFactoryProvider.on('catchAll', function (event) {
+        //     console.log(event)
+        // });
 }).run(function(appServices) {
     // init event such as routechangestart...
     appServices.init();

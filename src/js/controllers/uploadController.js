@@ -1,9 +1,10 @@
 angular.module("WxCourse").controller("uploadController",function($scope){
-    $scope.$on("flow::fileAdded",function(event, flow, flowFile){
-        flow.opts.target = "http://120.25.225.14:8080/admin/FileUpload/index";
+    $scope.$on("flow::filesSubmitted",function(event, flow, flowFile){
+        flow.opts.target = "http://120.25.225.14:8080/admin/FileUpload/special";
         flow.opts.testChunks = false;
         flow.opts.query = {
-            name:"sdfsdf"
+            "name":"sdfsdf",
+            "kksdapp":"it wonderfull team"
         }
         flow.upload();
     })

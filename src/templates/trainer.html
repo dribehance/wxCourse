@@ -5,7 +5,7 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div class="section bg-red text-white text-center">
-            <div class="avatar avatar-lg" flow-init ng-controller="uploadController">
+            <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="uploadController">
                 <div flow-btn class="flow-btn"></div>
                 <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
             </div>
@@ -25,7 +25,7 @@
             <div class="section section-wide section-sm">
                 <div class="semi-auto semi-right-40 text-ellipsis">
                     <div class="kk-line kk-vertical"></div>
-                    <span class="text-red">简介</span>
+                    <span class="text-red" ng-click="ajaxForm()">简介</span>
                     <div class="semi-fixed-right">
                         <a ng-click="edit({'intro':trainer.intro})">
                             <i class="kk kk-24 kk-edit-3"></i>
