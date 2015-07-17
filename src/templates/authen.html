@@ -4,6 +4,33 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-		实名认证
+        <div class="section"></div>
+        <div class="section">
+            <h4 class="text-center">完成实名认证，您将安全获得更多收益</h4>
+        </div>
+        <div class="section text-center">
+            <div flow-init="{singleFile:true,target: '/upload'}" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
+                <span needsclick flow-btn class="block full-width flow-btn text-center" flow-attrs="{accept:'image/*'}">
+                    <img src="../images/upload_1.png" ng-show="!$flow.files.length" alt="">
+                    <img flow-img="$flow.files[0]" ng-show="$flow.files.length" alt="">
+                </span>
+            </div>
+        </div>
+        <div class="section text-center">
+            <div needsclick flow-init="{singleFile:true,target: '/upload'}" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
+                <span flow-btn class="block full-width flow-btn text-center" flow-attrs="{accept:'image/*'}">
+                    <img src="../images/upload_2.png" ng-show="!$flow.files.length" alt="">
+                    <img flow-img="$flow.files[0]" alt="">
+                </span>
+            </div>
+        </div>
+        <div class="section">
+            <button type="submit" class="btn btn-lg btn-primary block full-width">
+                提交审核
+            </button>
+        </div>
+        <div class="section text-grey text-center text-small">
+            我们将在1-2个工作日内完成信息审核
+        </div>
     </div>
 </div>

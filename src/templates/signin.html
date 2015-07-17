@@ -1,9 +1,29 @@
-<div ui-content-for="title">登录</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <a ng-click="back()" class="btn">返回</a>
 </div>
-<div class="scrollable">
-	<div class="scrollable-content">
-		登录
-	</div>
+<div ui-content-for="title">
+    <span>登录</span>
 </div>
+<div ui-content-for="navbarAction"></div>
+<form name="signinForm" ng-submit="ajaxSubmit(this)" class="section">
+    <div class="text-center">
+        <img ng-src="../images/logo.png" alt="">
+    </div>
+    <div class="kk-input-group input-group-lg">
+        <span class="kk-input-group-addon"><i class="kk kk-20 kk-user"></i></span>
+        <input type="text" class="form-control" name="username" ng-model="input.name" placeholder="请输入用户名" required>
+        <span class="kk-input-tip" ng-show="signinForm.username.$error.required">用户名为必填</span>
+    </div>
+    <div class="kk-input-group input-group-lg">
+        <span class="kk-input-group-addon"><i class="kk kk-20 kk-password"></i></span>
+        <input type="password" class="form-control" name="password" ng-model="input.password" placeholder="请输入登录密码" required ng-minlength=8>
+        <span class="kk-input-tip" ng-show="signinForm.password.$error.required || signinForm.password.$error.minlength">密码必填并且密码位数不少于8位</span>
+    </div>
+    <p class="text-right"><a ng-href="#/forget" class="btn">忘记密码</a>
+    </p>
+    <div class="section-wide">
+        <button type="submit" class="btn btn-lg btn-primary block full-width" ng-disabled="signinForm.$invalid">立即登录</button>
+    </div>
+    <p class="text-center"><span class="text-grey">还没有账号？</span><a ng-href="#/signup" class="btn">免费注册</a>
+    </p>
+</form>

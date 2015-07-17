@@ -13,6 +13,21 @@ angular.module('WxCourse', [
             templateUrl: 'home.html',
             reloadOnSearch: false
         })
+        .when('/signin', {
+            templateUrl: 'signin.html',
+            reloadOnSearch: false,
+            controller:signinController
+        })
+        .when('/signup', {
+            templateUrl: 'signup.html',
+            reloadOnSearch: false,
+            controller:signupController
+        })
+        .when('/forget', {
+            templateUrl: 'forget.html',
+            reloadOnSearch: false,
+            controller:forgetController
+        })
         .when('/trainer', {
             templateUrl: 'trainer.html',
             reloadOnSearch: false,
@@ -31,7 +46,7 @@ angular.module('WxCourse', [
         .when('/authen', {
             templateUrl: 'authen.html',
             reloadOnSearch: false,
-            // controller: authenCourseController
+            controller: authenController
         })
         .when('/release_course', {
             templateUrl: 'release_course.html',
