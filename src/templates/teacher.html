@@ -1,0 +1,68 @@
+<div ui-content-for="title">老师列表</div>
+<div ui-content-for="backAction">
+    <span class="btn" ng-click="back()">返回</span>
+</div>
+<div class="scrollable">
+	<div class="scrollable-content">
+		
+        <div class="section bg-red text-white text-center">
+            <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="uploadController">
+                <div flow-btn class="flow-btn"></div>
+                <img flow-img="$flow.files[0]" ng-src="{{ teacher.avatar || '../images/avatar_2.png'}}" alt="">
+            </div>
+            <!-- <div class="avatar avatar-lg" flow-init>
+                <div></div>
+                <img flow-img="$flow.files[0]"  flow-btn ng-src="{{ teacher.avatar || '../images/avatar_2.png'}}" alt="">
+                <button type="button" ng-click="upload($flow)">上传</button>
+            </div> -->
+            <p></p>
+            <p>姓名：{{ teacher.type }}<i ng-click="edit({'type':teacher.type})" class="kk kk-24 kk-edit-2"></i>
+            </p>
+            <p>培训类型：{{ teacher.name }}<i ng-click="edit({'name':teacher.name})" class="kk kk-24 kk-edit-2"></i>
+            </p>
+        </div>
+        <div class="intro">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red" >简介</span>
+                    <div class="semi-fixed-right">
+                        <a ng-click="edit({'intro':teacher.intro})">
+                            <i class="kk kk-24 kk-edit-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section">{{ teacher.intro }}</div>
+        </div>
+        <div class="kk-line kk-horizon"></div>
+    
+	</div>
+	<div class="scrollable-footer">
+		<div class="section">
+            <a ng-click="remove()" class="btn btn-default block full-width">删除老师 </a>
+        </div>
+	</div>
+</div>
+<div ui-content-for="modals">
+    <div class="modal modal-overlay" ui-if='editable_panel' ui-state='editable_panel'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" ng-submit="ajaxForm(this)">
+                    <div class="modal-header">
+                        <button class="close" ui-turn-off="editable_panel">&times;</button>
+                        <h4 class="modal-title">编辑信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="editable_content" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button ui-turn-off="editable_panel" class="btn btn-default">取消</button>
+                        <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

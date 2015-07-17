@@ -51,17 +51,17 @@ angular.module('WxCourse', [
         .when('/teachers', {
             templateUrl: 'teachers.html',
             reloadOnSearch: false,
-            // controller: teachersController
+            controller: teachersController
         })
-        .when('/teacher', {
+        .when('/teachers/:teacherId', {
             templateUrl: 'teacher.html',
             reloadOnSearch: false,
-            // controller: teacherController
+            controller: teacherController
         })
         .when('/messages', {
             templateUrl: 'messages.html',
             reloadOnSearch: false,
-            // controller: messagesController
+            controller: messagesController
         })
         .when('/course_setting', {
             templateUrl: 'course_setting.html',

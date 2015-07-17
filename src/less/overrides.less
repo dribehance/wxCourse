@@ -39,6 +39,11 @@ a:active,a:focus,button:active,button:focus {
 	border-color: @red;
 	color: @red;
 } 
+.btn-group.justified.split-line {
+	>*:not(:first-child) {
+		border-left: 1px solid @lightGrey;
+	}
+}
 // ----------------------------form-control   ---------------------------- //
 .form-control {
 	&.flat {

@@ -15,23 +15,4 @@ var trainerController = function($scope, $http, trainerServices, errorServices, 
         }
         SharedState.turnOn("editable_panel");
     }
-    $scope.ajaxForm = function() {
-        console.log("ajax form for cors")
-        $http({
-            url: "http://120.25.225.14:8080/admin/FileUpload/normal",
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            transformRequest: function(obj) {
-                var str = [];
-                for (var p in obj)
-                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                return str.join("&");
-            },
-            data: {
-                "name": "hello world"
-            }
-        })
-    }
 }
