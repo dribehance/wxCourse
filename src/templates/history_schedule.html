@@ -1,9 +1,40 @@
-<div ui-content-for="title">学生签到历史</div>
+<div ui-content-for="title">学生签到</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		学生签到历史
-	</div>
+    <div class="scrollable-header">
+        <div class="section bg-grey text-white">
+            <div class="row">
+                <div class="col-xs-4 text-center">课时</div>
+                <div class="col-xs-4 text-center">参加</div>
+                <div class="col-xs-4 text-center">未参加</div>
+            </div>
+        </div>
+    </div>
+    <div class="scrollable-content">
+        <div class="section">
+            <a ng-href="#/history_schedule" class="block row text-black">
+                <div class="col-xs-4 text-center"><span class="btn">2015-06-03</span></div>
+                <div class="col-xs-4 text-center">
+                	<i class="kk kk-28 kk-check"></i>
+                </div>
+                <div class="col-xs-4 text-center">
+                	<i class="kk kk-28 kk-check"></i>
+                </div>
+            </a>
+        </div>
+        <div class="kk-line kk-horizon bg-light-grey"></div>
+        <div class="section">
+            <a ng-href="#/history_schedule" class="block row text-black">
+                <div class="col-xs-4 text-center"><span class="btn">2015-06-03</span></div>
+                <div class="col-xs-4 text-center">
+                	<i class="kk kk-28 kk-check"></i>
+                </div>
+                <div class="col-xs-4 text-center">
+                	<i class="kk kk-28 kk-check"></i>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>

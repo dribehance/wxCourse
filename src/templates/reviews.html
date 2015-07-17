@@ -1,9 +1,52 @@
 <div ui-content-for="title">学习情况</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		学习情况
-	</div>
+    <div class="scrollable-content">
+        <a ng-href="#/reviews/11" class="block text-grey section">
+            <div class="row">
+                <div class="col-xs-6 text-ellipsis text-red">
+                    洋洋
+                </div>
+                <div class="col-xs-6 text-ellipsis text-right">
+                    发表时间：2015-06-24
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-ellipsis col-xs-9">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.
+                </div>
+                <div class="col-xs-3">
+                    <div class="text-red text-right" ng-click="remove()">删除</div>
+                </div>
+            </div>
+        </a>
+        <div class="kk-line kk-horizon"></div>
+        <a ng-href="#/reviews/11" class="block text-grey section">
+            <div class="row">
+                <div class="col-xs-6 text-ellipsis text-red">
+                    洋洋
+                </div>
+                <div class="col-xs-6 text-ellipsis text-right">
+                    发表时间：2015-06-24
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-ellipsis col-xs-9">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.
+                </div>
+                <div class="col-xs-3">
+                    <div class="text-red text-right" ng-click="remove()">删除</div>
+                </div>
+            </div>
+
+
+        </a>
+    </div>
+    <div class="scrollable-footer">
+        <div class="section">
+            <a ng-href="#/release_review" class="btn btn-default block full-width">发布学习情况 </a>
+        </div>
+    </div>
 </div>

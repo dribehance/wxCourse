@@ -1,9 +1,41 @@
 <div ui-content-for="title">进度管理-概览</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		进度管理-概览
-	</div>
+    <div class="scrollable-header">
+        <div class="section bg-grey text-white">
+            <div class="row">
+                <div class="col-xs-4 text-center">姓名</div>
+                <div class="col-xs-4 text-center">已授课时</div>
+                <div class="col-xs-4 text-center">实到课时</div>
+            </div>
+        </div>
+    </div>
+    <div class="scrollable-content">
+        <div class="section">
+            <a ng-href="#/history_schedule" class="block row text-black">
+                <div class="col-xs-4 text-center">张三</div>
+                <div class="col-xs-4 text-center">10</div>
+                <div class="col-xs-4 text-center">1</div>
+            </a>
+        </div>
+        <div class="kk-line kk-horizon bg-light-grey"></div>
+        <div class="section">
+            <a ng-href="#/history_schedule" class="block row text-black">
+                <div class="col-xs-4 text-center">张三</div>
+                <div class="col-xs-4 text-center">10</div>
+                <div class="col-xs-4 text-center">1</div>
+            </a>
+        </div>
+        <div class="kk-line kk-horizon bg-light-grey"></div>
+        <div class="section">
+            <a ng-href="#/history_schedule" class="block row text-black">
+                <div class="col-xs-4 text-center">张三</div>
+                <div class="col-xs-4 text-center">10</div>
+                <div class="col-xs-4 text-center">1</div>
+            </a>
+        </div>
+        <div class="kk-line kk-horizon bg-light-grey"></div>
+    </div>
 </div>

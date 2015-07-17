@@ -1,9 +1,44 @@
 <div ui-content-for="title">发布学习情况</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		发布学习情况
-	</div>
+    <div class="scrollable-content">
+        <div flow-init class="multi-upload" ng-controller="multiUploaderController">
+            <div class="section">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">标题</span>
+                    </span>
+                    <input type="text" name="review_title" class="form-control flat full-width" ng-init="review.title=''" ng-model="review.title" required placeholder="请输入标题">
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">内容</span>
+                    </span>
+                    <textarea name="review_content" id="" rows="8" class="form-control flat full-width block" ng-init="review.content=''" ng-model="review.content" required placeholder="请输入内容"></textarea>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section text-right">
+            	<button type="button" class="btn btn-primary" ng-disabled="!$flow.files.length>0|| review.title=='' || review.content=='' ">发布</button>
+            </div>
+            <div>
+            	<div ng-repeat="file in $flow.files" class="preview-box">
+            		<span class="remove-btn" ng-click="file.cancel()"></span>
+            		<img flow-img="file" alt="">
+            	</div>
+            	<span flow-btn class="upload-btn"></span>
+            </div>
+        </div>
+    </div>
 </div>
