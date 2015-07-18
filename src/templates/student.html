@@ -1,9 +1,103 @@
 <div ui-content-for="title">个人基本资料</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		个人基本资料
-	</div>
+    <div class="scrollable-content">
+        <div flow-init="{singleFile:true}">
+        	
+            <!--登录账号  -->
+            <div class="student-teacher">
+                <div class="section" ng-click="choose()">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                            <span class="btn section-wide">登录账号</span>
+                        </span>
+                        <div class="form-control flat full-width text-right">7758258</div>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 头像 -->
+            <div class="student-avatar" >
+                <div class="section" style="min-height:55px;" flow-btn>
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">头像</span>
+                        </span>
+                        <div class="text-right">
+                        	<div class=" avatar-preview">
+                        		<img flow-img="$flow.files[0]" alt="">
+                        	</div>
+							
+                        </div>
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-right-arrow kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 昵称 -->
+            <div class="student-nickname">
+                <div class="section student-nickname">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">昵称</span>
+                        </span>
+                        <input type="text" name="nickname" class="form-control flat full-width text-right" ng-model="student.nickname" required placeholder="请输入昵称">
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 性别 -->
+            <div class="student-sex">
+                <div class="section">
+                    <div class="semi-auto semi-left-70 semi-right-40" ui-toggle="dropdown">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">性别</span>
+                        </span>
+                        <div class="form-control flat full-width text-right">{{ student.sex || '女'}}</div>
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
+                    <i class="kk kk-dropdown kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+                <div ui-state="dropdown" ui-default="0" ui-show="dropdown" ui-turn-off="dropdown" ui-outer-click="Ui.turnOff('dropdown')" ui-outer-click-if="Ui.active('dropdown')">
+                    <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':student.sex=='女'}">
+                        <input type="radio" ng-model="student.sex" value="女" class="hide">女</label>
+                    <div class="kk-line kk-horizon bg-white"></div>
+                    <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':student.sex=='男'}">
+                        <input type="radio" ng-model="student.sex" value="男" class="hide">男</label>
+                </div>
+            </div>
+            <!-- 授课老师 -->
+            <div class="student-teacher">
+                <div class="section" ng-click="choose()">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                            <span class="btn section-wide">绑定手机号</span>
+                        </span>
+                        <div class="form-control flat full-width text-right">13768132373</div>
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
+                    <i class="kk kk-right-arrow kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+
+
+
+
+            <div class="section">
+                <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid">保存</button>
+            </div>
+        
+        </div>
+    </div>
 </div>

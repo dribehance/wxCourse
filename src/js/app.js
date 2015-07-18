@@ -123,6 +123,26 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             // controller: historyScheduleController
         })
+        .when('/tutorials', {
+            templateUrl: 'tutorials.html',
+            reloadOnSearch: false,
+            controller: tutorialsController
+        })
+        .when('/tutorials/:tutorialId', {
+            templateUrl: 'tutorial.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+        .when('/comments', {
+            templateUrl: 'comments.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+        .when('/release_comment', {
+            templateUrl: 'release_comment.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
 
 }).run(function(appServices) {
     // init event such as routechangestart...

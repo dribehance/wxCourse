@@ -4,6 +4,54 @@
 </div>
 <div class="scrollable">
 	<div class="scrollable-content">
-		我要学习
+		<div class="section" style="padding-bottom:0px">
+            <a ng-href="#/tutorials/2" class="block text-black">
+                <div class="semi-auto semi-left-50" style="min-height:75px">
+                    <div class="semi-fixed-left semi-wide-50 text-center">
+                        <div class="avatar avatar-sm">
+                            <img ng-src="../images/avatar_2.png" alt="">
+                        </div>
+                        <div class="text-red">王五</div>
+                    </div>
+                    <div class="section section-condensed">
+                        <div class="row">
+                            <div class="col-xs-6 text-ellipsis text-large">小学语文</div>
+                            <div class="col-xs-6 text-red text-right text-ellipsis text-large">编号：4444</div>
+                        </div>
+                        <div class="kk-line kk-horizon bg-light-grey" style="margin:5px 0"></div>
+                        <div class="line-ellipsis line-2">
+                            简介：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro asperiores, aliquid sunt nulla accusamus dignissimos neque odio error cupiditate blanditiis alias cum beatae, ea ipsum? Voluptatibus sapiente, at rem laborum.
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div class="kk-line kk-horizon bg-light-grey" style="margin-top:5px"></div>
+            <div class="btn-group justified split-line">
+            	<div class="section text-center text-sm text-black">
+            		<div>(9)</div>
+            		报名人数
+            	</div>
+            	<a ng-href="#/comments" class="section text-center text-sm text-black">
+            		<div>(10)</div>
+            		学员评价
+            	</a>
+            	<div ng-click="toggle_like()" ng-show="like" class="section text-center text-sm text-black">
+            		<div>(9)</div>
+            		赞
+            	</div>
+                <div ng-click="toggle_like()" ng-show="!like" class="section text-center text-sm text-red">
+                    <div>(9)</div>
+                    取消赞
+                </div>
+            </div>
+        </div>
 	</div>
+    <div class="scrollable-footer">
+        <div class="section bg-grey section-wide section-sm">
+            <div class="btn-group justified split-line">
+                <a ng-href="#/reviews" class="btn btn-navbar text-white">上课情况</a>
+                <a ng-href="#/student" class="btn btn-navbar text-white">个人资料</a>
+            </div>
+        </div>
+    </div>
 </div>
