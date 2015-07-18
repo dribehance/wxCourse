@@ -24,6 +24,6 @@ angular.module("WxCourse").controller("singleAvatarUploadController",function($s
             "name":"sdfsdf",
             "kksdapp":"it wonderfull team"
         }
-        flow.upload();
+        // flow.upload();
     })
 });

@@ -121,7 +121,7 @@ angular.module('WxCourse', [
         .when('/release_review', {
             templateUrl: 'release_review.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: releaseReviewController
         })
         .when('/tutorials', {
             templateUrl: 'tutorials.html',
