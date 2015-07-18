@@ -68,7 +68,7 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: teachersController
         })
-        .when('/teachers/:teacherId', {
+        .when('/teachers/:teacher_id', {
             templateUrl: 'teacher.html',
             reloadOnSearch: false,
             controller: teacherController
@@ -128,7 +128,7 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: tutorialsController
         })
-        .when('/tutorials/:tutorialId', {
+        .when('/tutorials/:tutorial_id', {
             templateUrl: 'tutorial.html',
             reloadOnSearch: false,
             // controller: historyScheduleController
@@ -143,6 +143,27 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             // controller: historyScheduleController
         })
+        .when('/my_courses', {
+            templateUrl: 'my_courses.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+        .when('/my_courses/:course_id', {
+            templateUrl: 'my_course.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+        .when('/my_reviews', {
+            templateUrl: 'my_reviews.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+        .when('/my_reviews/:review_id', {
+            templateUrl: 'my_review.html',
+            reloadOnSearch: false,
+            // controller: historyScheduleController
+        })
+
 
 }).run(function(appServices) {
     // init event such as routechangestart...

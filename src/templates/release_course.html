@@ -145,11 +145,11 @@
                 <!-- 按天重复 -->
                 <div class="repeat-day" ng-if="course.repeat == 0">
                     <div class="section text-center" ng-repeat="time in course.time">
-                        <div class="col-xs-6">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide">
+                        <div class="col-xs-6 section-wide text-center">
+                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
                         </div>
-                        <div class="col-xs-6 section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide">
+                        <div class="col-xs-6 section-wide text-center">
+                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
                         </div>
                     </div>
                 </div>
@@ -157,13 +157,13 @@
                 <div class="repeat-week" ng-if="course.repeat == 1">
                     <div class="section text-center" ng-repeat="time in course.time">
                         <div class="col-xs-4 section-wide">
-                            <select name="week" id="week" class="form-control" ng-model="time.week" ng-options="week for week in weeks" required placeholder="选择日期"></select>
+                            <select name="week" id="week" class="form-control" ng-init="time.week='周一'" ng-model="time.week" ng-options="week for week in weeks" required placeholder="选择日期"></select>
                         </div>
-                        <div class="col-xs-4">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide">
+                        <div class="col-xs-4 text-center section-wide">
+                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
                         </div>
-                        <div class="col-xs-4 section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide">
+                        <div class="col-xs-4 text-center section-wide">
+                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
                         </div>
                     </div>
                 </div>
@@ -171,13 +171,13 @@
                 <div class="repeat-month" ng-if="course.repeat == 2">
                     <div class="section text-center" ng-repeat="time in course.time">
                         <div class="col-xs-4 section-wide">
-                            <select name="month" id="month" class="form-control" ng-model="time.month" ng-options="month for month in months" required placeholder="选择日期"></select>
+                            <select name="month" id="month" class="form-control" ng-init="time.month='1号'" ng-model="time.month" ng-options="month for month in months" required placeholder="选择日期"></select>
                         </div>
-                        <div class="col-xs-4">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide">
+                        <div class="col-xs-4 text-center section-wide">
+                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
                         </div>
-                        <div class="col-xs-4 section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide">
+                        <div class="col-xs-4 text-center section-wide">
+                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
                         </div>
                     </div>
                 </div>
