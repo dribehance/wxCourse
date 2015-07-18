@@ -5,8 +5,8 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div class="section bg-red text-white text-center">
-            <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="uploadController">
-                <div flow-btn class="flow-btn"></div>
+            <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="singleAvatarUploadController">
+                <div flow-btn flow-attrs="{accept:'image/*'}" class="flow-btn"></div>
                 <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
             </div>
             <!-- <div class="avatar avatar-lg" flow-init>

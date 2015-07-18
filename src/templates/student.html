@@ -4,7 +4,7 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div flow-init="{singleFile:true}">
+        <div flow-init="{singleFile:true}" ng-controller="studentUploadController">
         	
             <!--登录账号  -->
             <div class="student-teacher">
@@ -20,13 +20,14 @@
             </div>
             <!-- 头像 -->
             <div class="student-avatar" >
-                <div class="section" style="min-height:55px;" flow-btn>
+                <div class="section" style="min-height:55px;" flow-btn flow-attrs="{accept:'image/*'}">
                     <div class="semi-auto semi-left-70 semi-right-40">
                         <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">头像</span>
                         </span>
                         <div class="text-right">
                         	<div class=" avatar-preview">
+                                <img ng-src="../images/avatar_3.png" ng-show="!$flow.files.length" alt="">
                         		<img flow-img="$flow.files[0]" alt="">
                         	</div>
 							

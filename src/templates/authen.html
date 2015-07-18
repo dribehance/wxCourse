@@ -4,33 +4,33 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div class="section"></div>
-        <div class="section">
-            <h4 class="text-center">完成实名认证，您将安全获得更多收益</h4>
-        </div>
-        <div class="section text-center">
-            <div flow-init="{singleFile:true,target: '/upload'}" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
-                <span needsclick flow-btn class="block full-width flow-btn text-center" flow-attrs="{accept:'image/*'}">
+        <div flow-init ng-controller="authenUploadController" class="uploader">
+            <div class="section"></div>
+            <div class="section">
+                <h4 class="text-center"><p>完成实名认证</p>您将可以使用更多功能</h4>
+            </div>
+            <div class="section text-center">
+                    <span  class="block full-width flow-btn text-center">
                     <img src="../images/upload_1.png" ng-show="!$flow.files.length" alt="">
-                    <img flow-img="$flow.files[0]" ng-show="$flow.files.length" alt="">
+                    <div ng-repeat="file in $flow.files" class="preview-box">
+                        <span class="remove-btn" ng-click="file.cancel()"></span>
+                        <img flow-img="file" alt="">
+                    </div>
                 </span>
             </div>
-        </div>
-        <div class="section text-center">
-            <div needsclick flow-init="{singleFile:true,target: '/upload'}" flow-files-submitted="$flow.upload()" flow-file-success="$file.msg = $message">
-                <span flow-btn class="block full-width flow-btn text-center" flow-attrs="{accept:'image/*'}">
-                    <img src="../images/upload_2.png" ng-show="!$flow.files.length" alt="">
-                    <img flow-img="$flow.files[0]" alt="">
+            <div class="section">
+                <span flow-btn flow-attrs="{accept:'image/*'}" ng-show="$flow.files.length <2" class="btn btn-lg btn-primary block full-width">
+                    上传身份证照（正、反各一张）
                 </span>
+                <div class="btn-group justified" ng-show="$flow.files.length == 2">
+                    <span class="btn btn-default" ng-click="$flow.cancel()">重新上传</span>
+                    <span class="btn btn-primary">提交审核</span>
+                </div>
             </div>
-        </div>
-        <div class="section">
-            <button type="submit" class="btn btn-lg btn-primary block full-width">
-                提交审核
-            </button>
-        </div>
-        <div class="section text-grey text-center text-small">
-            我们将在1-2个工作日内完成信息审核
+            <div class="section text-grey text-center text-small">
+                我们将在1-2个工作日内完成信息审核
+            </div>
+
         </div>
     </div>
 </div>
