@@ -1,15 +1,15 @@
-angular.module("WxCourse").factory("trainerServices", function($http, config) {
+angular.module("WxCourse").factory("trainerServices", function($http,localStorageService, config) {
     return {
         // 查询培训方信息
         query: function() {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/info",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token")
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新头像
@@ -21,7 +21,7 @@ angular.module("WxCourse").factory("trainerServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方信息入口  ---除了头像
@@ -31,22 +31,22 @@ angular.module("WxCourse").factory("trainerServices", function($http, config) {
             }
             switch (state) {
                 case "type":
-                    this.updateType(obj);
+                    return this.updateType(obj);
                     break;
                 case "name":
-                    this.updateName(obj);
+                    return this.updateName(obj);
                     break;
                 case "intro":
-                    this.updateIntro(obj);
+                    return this.updateIntro(obj);
                     break;
                 case "address":
-                    this.updateAdrress(obj);
+                    return this.updateAdrress(obj);
                     break;
                 case "contact":
-                    this.updateContact(obj);
+                    return this.updateContact(obj);
                     break;
                 case "telephone":
-                    this.updateTelephone(obj);
+                    return this.updateTelephone(obj);
                     break;
                 default:
                     ;
@@ -61,79 +61,85 @@ angular.module("WxCourse").factory("trainerServices", function($http, config) {
             // 	method:"GET",
             // 	params:_params,
             // }).then(function(data){
-            // 	return data.data;
+            // 	return data.data.Response;
             // })
         },
         // 更新培训类型
         updateType: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateType",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "type":obj.type
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方名称
         updateName: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateCompanyName",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "company_name":obj.name
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方简介
         updateIntro: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateCompanyInfo",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "company_info":obj.intro
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方地址
         updateAdrress: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateCompanyAddress",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "company_address":obj.address
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方联系人
         updateContact: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateCompanyIncharge",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "company_incharge":obj.contact
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新培训方联系方式
         updateTelephone: function(obj) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/updateCompanyTelephone",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "telephone":obj.telephone
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
     }

@@ -3,12 +3,14 @@ angular.module("WxCourse").factory("parserServices", function(SharedState) {
         parseTrainer: function(data) {
             var trainer = new _m_trainer();
             trainer.id = "";
-            trainer.type = "";
-            trainer.school = "";
-            trainer.intro = "";
-            trainer.address = "";
-            trainer.contact = "";
-            trainer.telephone = "";
+            trainer.type = data.type || "暂未填写";
+            trainer.name = data.company_name || "暂未填写";
+            trainer.avatar = data.avatar || "../images/avatar_2.png";
+            trainer.intro = data.company_info || "暂未填写";
+            trainer.address = data.company_address || "暂未填写";
+            trainer.contact = data.company_incharge || "暂未填写";
+            trainer.telephone = data.company_telephone || "暂未填写";
+            trainer.status = data.indentity_status || "1";
             return trainer;
         },
         parseCourse: function(data) {

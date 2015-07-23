@@ -1,18 +1,22 @@
 var _m_trainer = function() {
     // type 培训类型
     // name 培训方名称
+    // avatar 头像
     // intro 培训方
     // address 培训方联系地址
     // contact 联系人
     // telephone 联系电话
+    // status 状态 1未认证 2认证通过 3认证未通过
     return {
         "id": "",
         "type": "",
         "name": "",
+        "avatar":"",
         "intro": "",
         "address": "",
         "contact": "",
-        "telephone": ""
+        "telephone": "",
+        "status":""
     }
 }
 var _m_course = function() {

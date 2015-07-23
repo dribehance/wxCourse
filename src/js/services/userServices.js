@@ -1,9 +1,9 @@
-angular.module("WxCourse").factory("userServices", function($http, config) {
+angular.module("WxCourse").factory("userServices", function($http, config, localStorageService, transformServices) {
     return {
         // 用户注册
-        register: function(telephone, password, referee, smscode) {
+        register: function(telephone, password, type) {
             return $http({
-                url: config.url + "/v1/service/account",
+                url: config.url + "/app/UserCenter/registe",
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -14,36 +14,43 @@ angular.module("WxCourse").factory("userServices", function($http, config) {
                         str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                     return str.join("&");
                 },
-                data: {}
+                data: {
+                    "telephone": telephone,
+                    "password": password,
+                    "type": transformServices.rever(config.role)[type],
+                }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             });
         },
-        login: function(username, password) {
+        login: function(telephone, password) {
             return $http({
-                url: config.url + "/v1/service/account/in",
+                url: config.url + "/app/UserCenter/login",
                 method: "GET",
                 params: angular.extend({}, config.common_params, {
-                    "username": username,
+                    "telephone": telephone,
                     "password": password
                 })
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             });
         },
         logout: function() {
-            return $http({
-                url: config.url + "/auth",
-                method: "DELETE"
-            }).then(function(data) {
-                return data.data;
-            });
+            localStorageService.remove("token");
+            localStorageService.remove("role");
+            localStorageService.remove("authen");
         },
         checkAuth: function() {
             if (localStorageService.get("token")) {
-                return true;
+                return {
+                    status:true,
+                    role:localStorageService.get("role")
+                }
             }
-            return false;
+            return {
+                status:false,
+                role:localStorageService.get("role")
+            };
         },
         authen: function(realname, identifyID) {
             return $http({
@@ -64,40 +71,30 @@ angular.module("WxCourse").factory("userServices", function($http, config) {
                     "token": localStorageService.get("token")
                 })
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
-        exist: function(telephone, username) {
+        exist: function(telephone) {
             return $http({
-                url: config.url + "/v1/service/account/logout",
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                transformRequest: function(obj) {
-                    var str = [];
-                    for (var p in obj)
-                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                    return str.join("&");
-                },
-                data: angular.extend({}, config.common_params, {
-                    "token":localStorageService.get("token")
-                })
+                url: config.url + "/app/UserCenter/isTelephoneRegister",
+                method: "GET",
+                params: {
+                    "telephone": telephone
+                }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             });
         },
         getSmscode: function(telephone, smstype) {
             return $http({
-                url: config.url + "/v1/service/smscode",
+                url: config.url + "/app/UserCenter/getSMSCode",
                 method: "GET",
                 params: angular.extend({}, config.common_params, {
                     "telephone": telephone,
-                    "signcode": $rootScope.signcode,
-                    "smstype": smstype
+                    "type": smstype
                 })
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         token: function() {
@@ -120,18 +117,16 @@ angular.module("WxCourse").factory("userServices", function($http, config) {
                 localStorageService.set("token", data.result.token);
             })
         },
-        forgetPassword: function(telephone, smscode, password) {
+        forgetPassword: function(telephone, password) {
             return $http({
-                url: config.url + "/v1/service/findpassword",
-                method: "PUT",
+                url: config.url + "/app/UserCenter/updatePassword",
+                method: "GET",
                 params: angular.extend({}, config.common_params, {
                     "telephone": telephone,
-                    "smscode": smscode,
-                    "signcode": $rootScope.signcode,
                     "password": password
                 })
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
     }

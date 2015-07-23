@@ -5,11 +5,13 @@ angular.module('WxCourse', [
     "mobile-angular-ui.core.activeLinks",
     "mobile-angular-ui.core.sharedState",
     "flow",
+    "timer",
+    "LocalStorageModule",
 ])
 
 .config(function($routeProvider,flowFactoryProvider) {
     $routeProvider
-        .when('/', {
+        .when('/index', {
             templateUrl: 'home.html',
             reloadOnSearch: false
         })
@@ -31,7 +33,10 @@ angular.module('WxCourse', [
         .when('/trainer', {
             templateUrl: 'trainer.html',
             reloadOnSearch: false,
-            controller: trainerController
+            controller: trainerController,
+            resolve:{
+                factory: trainerOnlyInterceptor
+            }
         })
         .when('/student', {
             templateUrl: 'student.html',
@@ -51,7 +56,10 @@ angular.module('WxCourse', [
         .when('/release_course', {
             templateUrl: 'release_course.html',
             reloadOnSearch: false,
-            controller: releaseCourseController
+            controller: releaseCourseController,
+            resolve:{
+                factory:authenInterceptor
+            }
         })
         .when('/courses', {
             templateUrl: 'courses.html',
@@ -131,7 +139,7 @@ angular.module('WxCourse', [
         .when('/tutorials/:tutorial_id', {
             templateUrl: 'tutorial.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: tutorialController
         })
         .when('/comments', {
             templateUrl: 'comments.html',
@@ -163,7 +171,9 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             // controller: historyScheduleController
         })
-
+        .otherwise({
+            redirectTo: "/index"
+        });
 
 }).run(function(appServices) {
     // init event such as routechangestart...

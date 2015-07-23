@@ -7,7 +7,7 @@
         <div class="section bg-red text-white text-center">
             <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="singleAvatarUploadController">
                 <div flow-btn flow-attrs="{accept:'image/*'}" class="flow-btn needsclick"></div>
-                <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
+                <img flow-img="$flow.files[0]" ng-src="{{ staticImageUrl + trainer.avatar || '../images/avatar_2.png'}}" alt="">
             </div>
             <!-- <div class="avatar avatar-lg" flow-init>
                 <div></div>
@@ -20,7 +20,7 @@
             <p>{{ trainer.name }}<i ng-click="edit({'name':trainer.name})" class="kk kk-24 kk-edit-2"></i>
             </p>
             <a ng-href="#/authen" class="btn text-white bg-red bordered">马上认证</a>
-            <a ng-href="#/exit" class="btn text-white bg-red bordered">退出</a>
+            <a ng-click="logout()" class="btn text-white bg-red bordered">退出</a>
         </div>
         <div class="intro">
             <div class="section section-wide section-sm">
@@ -45,7 +45,7 @@
                     <span class="text-red">地址：</span>
                     <span>{{ trainer.address }}</span>
                     <div class="semi-fixed-right">
-                        <a ng-click="edit({'contact':trainer.contact})">
+                        <a ng-click="edit({'address':trainer.address})">
                             <i class="kk kk-24 kk-edit-3"></i>
                         </a>
                     </div>
@@ -103,7 +103,7 @@
                         <h4 class="modal-title">编辑信息</h4>
                     </div>
                     <div class="modal-body">
-                        <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="editable_content" required></textarea>
+                        <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="input.editable_content" required></textarea>
                     </div>
                     <div class="modal-footer">
                         <button ui-turn-off="editable_panel" class="btn btn-default">取消</button>

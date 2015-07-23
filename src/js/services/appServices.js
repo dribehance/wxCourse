@@ -19,7 +19,7 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
             $rootScope.hasNavbarTop = true;
         }
         // navbar bottom
-        var _navbars_b = ["/"];
+        var _navbars_b = ["/index"];
         if (!_navbars_b.contains($location.path())) {
             // SharedState.turnOff("navbarBottom");
             $rootScope.hasNavbarBottom = false;
@@ -41,6 +41,7 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
             $rootScope.$on("$routeChangeStart", routeChangeStart);
             $rootScope.$on("$routeChangeSuccess", routeChangeSuccess);
             // init navbar 
+            $rootScope.staticImageUrl = config.imageUrl;
             $rootScope.hasNavbarBottom = true;
             $rootScope.hasNavbarTop = true;
             // backaction
