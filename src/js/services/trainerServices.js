@@ -7,7 +7,8 @@ angular.module("WxCourse").factory("trainerServices", function($http,localStorag
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token")
-                }
+                },
+                cache:true
             }).then(function(data) {
                 return data.data.Response;
             })

@@ -1,16 +1,16 @@
-angular.module("WxCourse").factory("parserServices", function(SharedState) {
+angular.module("WxCourse").factory("parserServices", function(SharedState,config) {
     return {
         parseTrainer: function(data) {
             var trainer = new _m_trainer();
             trainer.id = "";
             trainer.type = data.type || "暂未填写";
             trainer.name = data.company_name || "暂未填写";
-            trainer.avatar = data.avatar || "../images/avatar_2.png";
+            trainer.avatar = data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png";
             trainer.intro = data.company_info || "暂未填写";
             trainer.address = data.company_address || "暂未填写";
             trainer.contact = data.company_incharge || "暂未填写";
             trainer.telephone = data.company_telephone || "暂未填写";
-            trainer.status = data.indentity_status || "1";
+            trainer.status = data.identity_status || "1";
             return trainer;
         },
         parseCourse: function(data) {

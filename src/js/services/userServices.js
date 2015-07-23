@@ -17,7 +17,7 @@ angular.module("WxCourse").factory("userServices", function($http, config, local
                 data: {
                     "telephone": telephone,
                     "password": password,
-                    "type": transformServices.rever(config.role)[type],
+                    "type": config.role[type],
                 }
             }).then(function(data) {
                 return data.data.Response;

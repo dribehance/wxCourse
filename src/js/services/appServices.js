@@ -8,6 +8,10 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
         errorServices.hide();
         navBarHandler(e, currentRoute, prevRoute);
     }
+    var routeChangeError = function(e, currentRoute, prevRoute){
+        
+        // $rootScope.back();
+    }
     var navBarHandler = function(e, currentRoute, prevRoute) {
         // navbar top
         var _navbars_t = ["/me"];
@@ -40,8 +44,8 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
             // rootScope binding
             $rootScope.$on("$routeChangeStart", routeChangeStart);
             $rootScope.$on("$routeChangeSuccess", routeChangeSuccess);
+            $rootScope.$on("$routeChangeError", routeChangeError);
             // init navbar 
-            $rootScope.staticImageUrl = config.imageUrl;
             $rootScope.hasNavbarBottom = true;
             $rootScope.hasNavbarTop = true;
             // backaction

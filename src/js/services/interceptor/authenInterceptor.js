@@ -1,13 +1,12 @@
-var authenInterceptor = function($rootScope, $location,$timeout, $q, userServices, localStorageService, config) {
+var authenInterceptor = function($rootScope, $location,$timeout, $q, userServices,errorServices, localStorageService, config) {
     var defer = $q.defer();
     if (localStorageService.get("authen") == config.authen.PASS) {
         return true;
     } else {
-        errorServices.authHide(config.message.authen[localStorageService.get("authen")]);
+        errorServices.autoHide(config.message.authen[localStorageService.get("authen")]);
         $timeout(function(){
-        	$rootScope.back();
-        },500)
-        // $location.path("/signin").replace();
+            $rootScope.back();
+        },3000)
         defer.reject()
     }
     return defer.promise;

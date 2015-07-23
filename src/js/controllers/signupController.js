@@ -55,7 +55,7 @@ var signupController = function($rootScope, $scope, $location, $timeout, localSt
         }
         toastServices.show();
         userServices.register($scope.input.telephone, $scope.input.password, $scope.input.referee).then(function(data) {
-
+           
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 toastServices.hide();
                 errorServices.autoHide("注册成功，跳转登录！")
