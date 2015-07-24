@@ -11,12 +11,12 @@ var _m_trainer = function() {
         "id": "",
         "type": "",
         "name": "",
-        "avatar":"",
+        "avatar": "",
         "intro": "",
         "address": "",
         "contact": "",
         "telephone": "",
-        "status":""
+        "status": ""
     }
 }
 var _m_course = function() {
@@ -58,29 +58,29 @@ var _m_course = function() {
         "trainer": new _m_trainer(),
         "comments": [],
 
-        "endless":"1",
-        "from": "",
-        "to": "",
+        "endless": "1",
+        "from": new Date(2015, 1 - 1, 1),
+        "to": new Date(2015, 1 - 1, 1),
         "repeat": "0",
         "time": [],
         "address": "",
         "money": "",
         "intro": "",
-        "section":""
+        "section": ""
     }
 }
-var _m_course_type = function(){
+var _m_course_type = function() {
     return {
-        id:"",
-        name:"",
+        id: "",
+        name: "",
     }
 }
 var _m_day_repeater = function() {
     // start_time 当天上课开始时间
     // end_time 当天上课时间
     return {
-        "start_time": "",
-        "end_time": ""
+        "start_time": new Date(2015, 1 - 1, 1, 07, 00, 00),
+        "end_time": new Date(2015, 1 - 1, 1, 22, 00, 00)
     }
 }
 var _m_week_repeater = function() {
@@ -88,9 +88,9 @@ var _m_week_repeater = function() {
     // start_time 当天上课开始时间
     // end_time 当天上课时间
     return {
-        "week": "",
-        "start_time": "",
-        "end_time": ""
+        "week": "周一",
+        "start_time": new Date(2015, 1 - 1, 1, 07, 00, 00),
+        "end_time": new Date(2015, 1 - 1, 1, 22, 00, 00)
     }
 }
 var _m_month_repeater = function() {
@@ -98,9 +98,9 @@ var _m_month_repeater = function() {
     // start_time 当天上课开始时间
     // end_time 当天上课时间
     return {
-        "day": "",
-        "start_time": "",
-        "end_time": ""
+        "month": "1号",
+        "start_time": new Date(2015, 1 - 1, 1, 07, 00, 00),
+        "end_time": new Date(2015, 1 - 1, 1, 22, 00, 00)
     }
 }
 var _m_schedule = {
@@ -184,8 +184,8 @@ var _m_teacher = function() {
 var _m_message = function() {
     return {
         "id": "",
-        "release_time":"",
-        "student": new _m_student(),
+        "by": "",
+        "release_time": "",
         "content": "",
     }
 }
@@ -198,7 +198,7 @@ var _m_comment = function() {
 }
 var _m_review = function() {
     return {
-    	"id":"",
+        "id": "",
         "by": "",
         "title": "",
         "content": "",

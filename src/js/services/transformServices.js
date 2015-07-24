@@ -43,7 +43,7 @@ angular.module("WxCourse").factory("transformServices", function($http, $rootSco
 			var date_string = "",
 				year_string = date.getFullYear(),
 				month_string = date.getMonth()+1;
-				month_string = month_string <10?"0"+date.getMonth():date.getMonth(),
+				month_string = month_string <10?"0"+month_string:month_string,
 				date_string = date.getDate()<10?"0"+date.getDate():date.getDate();
 			return year_string +"-"+month_string+"-"+date_string;
 		}

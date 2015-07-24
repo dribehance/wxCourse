@@ -1,22 +1,23 @@
-var teacherController = function($scope, $http, teacherServices, errorServices, toastServices, SharedState, config) {
-    $scope.teacher = new _m_teacher();
-    $scope.teacher.type = "语文";
-    $scope.teacher.name = "北大青鸟软件实训";
-    $scope.teacher.intro = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, sequi porro dignissimos, eum sunt incidunt blanditiis magni cupiditate dicta provident, quibusdam! Magni beatae natus enim repellat culpa, quo rem aliquid!";
-    $scope.teacher.address = "深圳财富港国际中心D座";
-    $scope.teacher.contact = "沈文涛";
-    $scope.teacher.telephone = "13468132373";
-    // teacherServices.queryById().then(function(data) {
+var teacherController = function($scope, $routeParams, teacherServices, parserServices, errorServices, toastServices, SharedState, config) {
 
-    // });
+    teacherServices.queryById($routeParams.teacher_id).then(function(data) {
+        if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+            $scope.teacher = parserServices.parseTeacher(data);
+        }
+    });
+    $scope.input = {
+        "editable_key": "",
+        "editable_content": ""
+    }
     $scope.edit = function(m) {
         for (key in m) {
-            $scope.editable_content = m[key];
+            $scope.input.editable_key = key;
+            $scope.input.editable_content = m[key];
         }
         SharedState.turnOn("editable_panel");
     }
 }
-angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope,localStorageService, config) {
+angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope, localStorageService, config) {
     $scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
         flow.opts.target = config.url + "/app/UserCenter/updateAvatar";
         flow.opts.testChunks = false;

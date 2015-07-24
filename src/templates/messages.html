@@ -4,34 +4,22 @@
 </div>
 <div class="scrollable">
 	<div class="scrollable-content">
-		<div class="comment">
+		<div class="comment" ng-repeat="message in messages">
             <div class="section">
                 <div class="row">
                     <div class="col-xs-6 text-ellipsis text-red">
-                        洋洋
+                        {{message.by}}
                     </div>
                     <div class="col-xs-6 text-ellipsis text-right">
-                        发表时间：2015-06-24
+                        发表时间：{{message.release_time}}
                     </div>
                 </div>
-                <div class="">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.   
-                </div>
+                <div class="">{{message.content}}</div>
             </div>
             <div class="kk-line kk-horizon"></div>
-            <div class="section">
-                <div class="row">
-                    <div class="col-xs-6 text-ellipsis text-red">
-                        洋洋
-                    </div>
-                    <div class="col-xs-6 text-ellipsis text-right">
-                        发表时间：2015-06-24
-                    </div>
-                </div>
-                <div class="">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.   
-                </div>
-            </div>
+        </div>
+        <div class="section text-center">
+            <a ng-click="loadMore()" class="btn btn-default">{{load_more_message}}</a>
         </div>
 	</div>
 </div>

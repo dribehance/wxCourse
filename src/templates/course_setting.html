@@ -5,7 +5,6 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <form name="releaseForm" ng-submit="ajaxForm(this)">
-
             <!-- 课程名称 -->
             <div class="course-name">
                 <div class="section">
@@ -36,6 +35,21 @@
                 </div>
                 <div class="kk-line kk-horizon"></div>
             </div>
+            <!-- 课程总节数 -->
+            <div class="course-section">
+                <div class="section course-section">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">课程节数</span>
+                        </span>
+                        <input type="text" name="section" class="form-control flat full-width text-right" ng-model="course.section" ng-pattern="/^[0-9]+$/" required placeholder="请输入课程节数">
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
             <!-- 课程培训类别 -->
             <div class="course-type">
                 <div class="section">
@@ -43,7 +57,7 @@
                         <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">培训类别</span>
                         </span>
-                        <div class="form-control flat full-width text-right">{{ course.type }}</div>
+                        <div class="form-control flat full-width text-right">{{ course.type.name || "语文"}}</div>
                         <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
                     <i class="kk kk-dropdown kk-24"></i>
                 </span>
@@ -51,11 +65,12 @@
                 </div>
                 <div class="kk-line kk-horizon"></div>
                 <div ui-state="dropdown" ui-default="0" ui-show="dropdown" ui-turn-off="dropdown" ui-outer-click="Ui.turnOff('dropdown')" ui-outer-click-if="Ui.active('dropdown')">
-                    <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type=='语文'}">
-                        <input type="radio" ng-model="course.type" value="语文" class="hide">语文</label>
+                    <div ng-repeat="course_type in course_types">
+                        <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type.name==course_type.name}">
+                        <input type="radio" ng-model="course.type" ng-value="course_type" class="hide">{{course_type.name}}</label>
                     <div class="kk-line kk-horizon bg-white"></div>
-                    <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type=='数学'}">
-                        <input type="radio" ng-model="course.type" value="数学" class="hide">数学</label>
+                    </div>
+                    
                 </div>
             </div>
             <!-- 授课老师 -->
@@ -83,12 +98,12 @@
                 </span>
                         <div class="text-right">无限</div>
                         <div class="semi-fixed-right semi-wide-40 text-center">
-                            <input type="checkbox" ng-model="course.to" value="endless">
+                            <input type="checkbox" ng-model="course.endless" ng-checked="course.endless ==0" ng-true-value="0" ng-false-value="1">
                         </div>
                     </div>
                 </div>
                 <div class="kk-line kk-horizon"></div>
-                <div class="section text-center">
+                <div class="section text-center" ng-if="course.endless == 1">
                     <div class="col-xs-5 section-wide">
                         <input type="date" name="from" ng-model="course.from" required class="form-control section-wide">
                     </div>
@@ -163,7 +178,7 @@
                             <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide">
                         </div>
                         <div class="col-xs-4 section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide">
+                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" value="{{time.end_time}}" required class="form-control section-wide">
                         </div>
                     </div>
                 </div>

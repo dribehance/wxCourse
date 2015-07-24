@@ -39,12 +39,13 @@ angular.module("WxCourse").factory("courseServices", function($http,transformSer
             })
         },
         // 课程详情
-        queryById: function() {
+        queryById: function(id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/info",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "course_id":id
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -98,11 +99,35 @@ angular.module("WxCourse").factory("courseServices", function($http,transformSer
             })
         },
         // 更新课程
-        update: function(obj) {
+        update: function(course) {
             return $http({
-                url: config.url + "",
-                method: "GET",
-                params: {
+                url: config.url + "/app/Course/update",
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                transformRequest: function(obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {
+                    "token": localStorageService.get("token"),
+                    "course_id": course.id,
+                    "name": course.name,
+                    "count": course.capacity,
+                    "course_count":course.section,
+                    "type_id": course.type.id,
+                    "teacher_id": course.teacher.id,
+                    "run_type": course.endless,
+                    "start_day": transformServices.transformDate(course.from),
+                    "end_day": transformServices.transformDate(course.to),
+                    "repetition": config.message.repeater[course.repeat],
+                    "time": transformServices.transformTimes(course.time,course.repeat),
+                    "address": course.address,
+                    "fee": course.money,
+                    "info": course.intro
 
                 }
             }).then(function(data) {

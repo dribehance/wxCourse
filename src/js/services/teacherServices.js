@@ -13,12 +13,13 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
             })
         },
         // 查询老师详情
-        queryById: function() {
+        queryById: function(teacher_id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/teacher_info",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token"),
+                    "teacher_id":teacher_id
                 }
             }).then(function(data) {
                 return data.data.Response;

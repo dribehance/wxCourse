@@ -62,7 +62,7 @@ var releaseCourseController = function($rootScope, $scope, toastServices, parser
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 $rootScope.back();
             } else {
-                // errorServices.autoHide("服务器错误");
+                errorServices.autoHide("服务器错误");
             }
         })
     }

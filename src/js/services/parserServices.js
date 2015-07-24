@@ -1,11 +1,11 @@
-angular.module("WxCourse").factory("parserServices", function(SharedState,config) {
+angular.module("WxCourse").factory("parserServices", function(SharedState, transformServices, config) {
     return {
         parseTrainer: function(data) {
             var trainer = new _m_trainer();
             trainer.id = "";
             trainer.type = data.type || "暂未填写";
             trainer.name = data.company_name || "暂未填写";
-            trainer.avatar = data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png";
+            trainer.avatar = data.avatar ? config.imageUrl + data.avatar : "../images/avatar_2.png";
             trainer.intro = data.company_info || "暂未填写";
             trainer.address = data.company_address || "暂未填写";
             trainer.contact = data.company_incharge || "暂未填写";
@@ -17,29 +17,32 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             var course = new _m_course();
             course.id = data.course_id;
             course.name = data.name;
-            course.type = data.type;
 
-            course.capacity = data.amount;
+            course.capacity = data.count;
             course.apply_amount = "0";
             course.comment_amount = "0";
             course.like_amount = "0";
             course.is_like = "0";
-            course.endless = "1";
-            course.from = "";
-            course.to = "";
-            course.repeat = "";
-            course.time = [];
-            course.address = "";
-            course.money = "";
+            course.endless = data.run_type || "0";
+            course.from = this.parseDate(data.start_day);
+            course.to = this.parseDate(data.end_day);
+            course.repeat = transformServices.rever(config.message.repeater)[data.repetition];
+            course.time = this.parseTimes(data.courseTimes, transformServices.rever(config.message.repeater)[data.repetition]);
+            course.address = data.address;
+            course.money = data.fee;
             course.intro = data.info;
-            course.sections = "";
-
+            course.section = data.course_count;
+            // type
+            course.type = {
+                id: data.type_id,
+                name: data.type
+            };
             // teacher
             course.teacher = {
-                id:data.teacher_id,
-                name:data.teacher_name,
-                avatar: data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png"
-            }
+                id: data.teacher_id,
+                name: data.teacher_name,
+                avatar: data.avatar ? config.imageUrl + data.avatar : "../images/avatar_2.png"
+            };
             // trainer
             course.trainer.name = "";
             // comment
@@ -59,7 +62,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             }
             return courses;
         },
-        parseCourseType:function(data){
+        parseCourseType: function(data) {
             var course_type = new _m_course_type();
             course_type.id = data.type_id;
             course_type.name = data.name;
@@ -73,6 +76,44 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
                 course_types.push(course_type);
             }
             return course_types;
+        },
+        parseTime: function(data, repeater) {
+            var time;
+            if (repeater == config.repeater.DATE) {
+                time = new _m_day_repeater();
+            }
+            if (repeater == config.repeater.WEEK) {
+                time = new _m_week_repeater();
+                time.week = data.week;
+            }
+            if (repeater == config.repeater.MONTH) {
+                time = new _m_month_repeater();
+                time.month = data.week;
+            }
+            var start_times = data.start_time.split(":"),
+                end_time = data.end_time.split(":");
+            time.start_time = new Date(1970, 0, 1, start_times[0], start_times[1], 00); //data.start_time;
+            time.end_time = new Date(1970, 0, 1, end_time[0], end_time[1], 00) //data.end_time;
+            return time;
+        },
+        parseTimes: function(data, repeater) {
+            var times = [];
+            if (!data) {
+                return times;
+            }
+            // times parse
+            for (var i = 0; i < data.length; i++) {
+                var time = this.parseTime(data[i], repeater);
+                times.push(time);
+            }
+            return times;
+        },
+        parseDate: function(time_string) {
+            if (!time_string) {
+                return new Date(2015, 1 - 1, 1);
+            }
+            var date = time_string.split("-");
+            return new Date(date[0], parseInt(date[1]) - 1, date[2]);
         },
         parseComment: function(data) {
             var comment = new _m_comment();
@@ -151,14 +192,14 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             var teacher = new _m_teacher();
             teacher.id = data.teacher_id;
             teacher.name = data.name;
-            teacher.avatar = data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png";
+            teacher.avatar = data.avatar ? config.imageUrl + data.avatar : "../images/avatar_2.png";
             teacher.type = data.type;
             teacher.intro = data.info;
             return teacher;
         },
         parseTeachers: function(data) {
             var teachers = [];
-            for ( var i=0;i<data.length;i++) {
+            for (var i = 0; i < data.length; i++) {
                 var teacher = this.parseTeacher(data[i]);
                 teachers.push(teacher);
             }
@@ -166,17 +207,24 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
         },
         parseMessage: function(data) {
             var message = new _m_message();
-            message.by = "";
-            message.release_time = "";
+            message.by = data.user_name;
+            message.release_time = data.post_time;
+            message.content = data.content;
             message.entrance_time = "";
-            message.content = "";
-            message.student.name = "";
             return message;
+        },
+        parseMessages: function(data) {
+            var messages = [];
+            for (var i = 0; i < data.length; i++) {
+                var message = this.parseMessage(data[i]);
+                messages.push(message);
+            }
+            return messages;
         },
         parseReview: function(data) {
             var review = new _m_review();
             review.id = "",
-            review.by = "";
+                review.by = "";
             review.release_time = "";
             review.title = "";
             review.content = "";

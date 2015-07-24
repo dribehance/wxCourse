@@ -91,7 +91,7 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: messagesController
         })
-        .when('/course_setting', {
+        .when('/course_setting/:course_id', {
             templateUrl: 'course_setting.html',
             reloadOnSearch: false,
             controller: courseSettingController
