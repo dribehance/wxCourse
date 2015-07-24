@@ -29,6 +29,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             course.trainer.name = "";
             course.comments = this.parseComments(data.comments);
 
+            course.endless = "1";
             course.from = "";
             course.to = "";
             course.repeat = "";
@@ -36,6 +37,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             course.address = "";
             course.money = "";
             course.intro = "";
+            course.sections = "";
             return course;
         },
         parseCourses: function(data) {
@@ -49,6 +51,21 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
                 courses.push(course);
             }
             return courses;
+        },
+        parseCourseType:function(data){
+            var course_type = new _m_course_type();
+            course_type.id = data.type_id;
+            course_type.name = data.name;
+            return course_type;
+        },
+        parseCourseTypes: function(data) {
+            var course_types = [];
+            // courses parse
+            for (var i = 0; i < data.length; i++) {
+                var course_type = this.parseCourseType(data[i]);
+                course_types.push(course_type);
+            }
+            return course_types;
         },
         parseComment: function(data) {
             var comment = new _m_comment();
@@ -125,12 +142,20 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
         },
         parseTeacher: function(data) {
             var teacher = new _m_teacher();
-            teacher.id = "";
-            teacher.name = "";
-            teacher.avatar = "";
-            teacher.type = "";
-            teacher.intro = "";
+            teacher.id = data.teacher_id;
+            teacher.name = data.name;
+            teacher.avatar = data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png";
+            teacher.type = data.type;
+            teacher.intro = data.info;
             return teacher;
+        },
+        parseTeachers: function(data) {
+            var teachers = [];
+            for ( var i=0;i<data.length;i++) {
+                var teacher = this.parseTeacher(data[i]);
+                teachers.push(teacher);
+            }
+            return teachers;
         },
         parseMessage: function(data) {
             var message = new _m_message();

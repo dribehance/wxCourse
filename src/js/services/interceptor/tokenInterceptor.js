@@ -27,9 +27,11 @@ angular.module("WxCourse").factory("tokenInterceptor", function($window, $locati
                 return response;
             }
             // server response
-            if (response.data == config.request.TOKEN_INVALID) {
+            if (response.data.Response.code == config.request.TOKEN_INVALID) {
                 console.log("TOKEN_INVALID")
                 localStorageService.remove("token");
+                localStorageService.remove("role");
+                localStorageService.remove("authen");
                 $location.path("/signin").replace();
                 return defer.promise;
             } else {

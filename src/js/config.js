@@ -24,6 +24,11 @@ angular.module("WxCourse").constant("config", {
             "1":"未认证",
             "2":"已认证通过",
             "3":"认证未通过"
+        },
+        repeater:{
+            "0":"每天",
+            "1":"每周",
+            "2":"每月"
         }
     },
     // 1 学生 2培训方
@@ -44,6 +49,11 @@ angular.module("WxCourse").constant("config", {
         "UNAUTHEN":"1",
         "PASS":"2",
         "REFUSED":"3"
+    },
+    repeater:{
+        "DATE":"0",
+        "WEEK":"1",
+        "MONTH":"2"
     },
     common_params: {},
 });

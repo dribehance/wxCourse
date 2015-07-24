@@ -1,19 +1,12 @@
-var teachersController = function($scope, teacherServices, errorServices, toastServices,SharedState, config) {
-	$scope.teachers = [{
-			"name":"张三",
-			"type":"语文",
-			"intro":"简介"
-		},{
-			"name":"李四",
-			"type":"语文",
-			"intro":"简介"
-		},{
-			"name":"王五",
-			"type":"语文",
-			"intro":"简介"
-		},{
-			"name":"陈六",
-			"type":"语文",
-			"intro":"简介"
-		}];
+var teachersController = function($scope, teacherServices,parserServices, errorServices, toastServices, SharedState, config) {
+    toastServices.show();
+    teacherServices.queryByTrainer().then(function(data) {
+        toastServices.hide();
+        if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+            $scope.teachers = parserServices.parseTeachers(data.teachers);
+        } else {
+            errorServices.autoHide("服务器错误");
+        }
+    })
+
 }

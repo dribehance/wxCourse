@@ -1,9 +1,79 @@
 <div ui-content-for="title">增加老师</div>
 <div ui-content-for="backAction">
-	<span class="btn" ng-click="back()">返回</span>
+    <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-	<div class="scrollable-content">
-		增加老师
-	</div>
+    <div class="scrollable-content">
+        <div flow-init="{singleFile:true}" ng-controller="teacherUploadController">
+
+            <!-- 头像 -->
+            <div class="teacher-avatar">
+                <div class="section" style="min-height:55px;">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">头像</span>
+                        </span>
+                        <div class="text-right needsclick" flow-btn flow-attrs="{accept:'image/*'}">
+                            <div class="avatar-preview">
+                                <img ng-src="../images/avatar_3.png" ng-show="!$flow.files.length" alt="">
+                                <img flow-img="$flow.files[0]" alt="">
+                            </div>
+
+                        </div>
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-right-arrow kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 姓名 -->
+            <div class="teacher-name">
+                <div class="section teacher-name">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">姓名</span>
+                        </span>
+                        <input type="text" name="name" class="form-control flat full-width text-right" ng-model="teacher.name" required placeholder="请输入昵称">
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 培训类别 -->
+            <div class="teacher-type">
+                <div class="section teacher-type">
+                    <div class="semi-auto semi-left-70 semi-right-40">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">培训类别</span>
+                        </span>
+                        <input type="text" name="type" class="form-control flat full-width text-right" ng-model="teacher.type" required placeholder="请输入昵称">
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+            </div>
+            <!-- 老师简介 -->
+            <div class="intro">
+                <div class="section section-wide">
+                    <div class="semi-auto semi-right-40 text-ellipsis">
+                        <div class="kk-line kk-vertical"></div>
+                        <span class="text-red">个人简介</span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+                <div class="section">
+                	<textarea name="" id="" rows="8" class="form-control full-width block" ng-model="teacher.intro" required></textarea>
+                </div>
+            </div>
+            <div class="section">
+                <button type="button" class="btn btn-primary block full-width" ng-disabled="!$flow.files.length>0|| teacher.name=='' || teacher.intro == '' || teacher.type ==''" ng-click="ajaxForm($flow)">新增</button>
+            </div>
+
+        </div>
+    </div>
 </div>

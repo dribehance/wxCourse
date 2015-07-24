@@ -33,6 +33,7 @@ var _m_course = function() {
 
     // release_time 发布时间
 
+    // endless 课程无结束时间 0:无限 1:有限 
     // from 课程开始时间
     // to 课程结束时间
     // repeat 课程重复频率 0:每天 1:每周 2:每月
@@ -41,10 +42,11 @@ var _m_course = function() {
     // address 上课地址
     // money 费用标准
     // intro 课程简介
+    // section 总节数
     return {
         "id": "",
         "name": "小学语文",
-        "type": "语文",
+        "type": new _m_course_type(),
 
         "capacity": "",
         "apply_amount": "0",
@@ -56,13 +58,21 @@ var _m_course = function() {
         "trainer": new _m_trainer(),
         "comments": [],
 
+        "endless":"1",
         "from": "",
         "to": "",
         "repeat": "0",
         "time": [],
         "address": "",
         "money": "",
-        "intro": ""
+        "intro": "",
+        "section":""
+    }
+}
+var _m_course_type = function(){
+    return {
+        id:"",
+        name:"",
     }
 }
 var _m_day_repeater = function() {
@@ -168,7 +178,7 @@ var _m_teacher = function() {
         "name": "",
         "avatar": "",
         "type": "",
-        "intro": "",
+        "intro": "暂未填写",
     }
 }
 var _m_message = function() {

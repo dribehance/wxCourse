@@ -9,7 +9,7 @@ angular.module('WxCourse', [
     "LocalStorageModule",
 ])
 
-.config(function($routeProvider,flowFactoryProvider) {
+.config(function($routeProvider,$httpProvider,flowFactoryProvider) {
     $routeProvider
         .when('/index', {
             templateUrl: 'home.html',
@@ -80,6 +80,11 @@ angular.module('WxCourse', [
             templateUrl: 'teacher.html',
             reloadOnSearch: false,
             controller: teacherController
+        })
+        .when('/add_teacher', {
+            templateUrl: 'add_teacher.html',
+            reloadOnSearch: false,
+            controller: addTeacherController
         })
         .when('/messages', {
             templateUrl: 'messages.html',
@@ -174,6 +179,7 @@ angular.module('WxCourse', [
         .otherwise({
             redirectTo: "/index"
         });
+        $httpProvider.interceptors.push('tokenInterceptor');
 
 }).run(function(appServices) {
     // init event such as routechangestart...

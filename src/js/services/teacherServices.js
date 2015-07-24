@@ -1,15 +1,15 @@
-angular.module("WxCourse").factory("teacherServices", function($http, config) {
-	return {
-		// 查询老师 按培训方查询
+angular.module("WxCourse").factory("teacherServices", function($http, localStorageService, config) {
+    return {
+        // 查询老师 按培训方查询
         queryByTrainer: function() {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/selectTeacher",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token")
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 查询老师详情
@@ -21,7 +21,7 @@ angular.module("WxCourse").factory("teacherServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 增加老师
@@ -33,7 +33,7 @@ angular.module("WxCourse").factory("teacherServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 删除老师
@@ -45,8 +45,8 @@ angular.module("WxCourse").factory("teacherServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
-	}
+    }
 });

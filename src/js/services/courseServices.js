@@ -1,4 +1,4 @@
-angular.module("WxCourse").factory("courseServices", function($http, config) {
+angular.module("WxCourse").factory("courseServices", function($http,transformServices, localStorageService, config) {
     return {
         // 课程列表----查询所有(我要学习)
         query: function() {
@@ -9,7 +9,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 课程列表----根据培训方查询
@@ -21,7 +21,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 课程列表----根据关键字查询
@@ -33,7 +33,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 课程详情
@@ -45,19 +45,53 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
+            })
+        },
+        // 课程详情
+        queryCourseType: function() {
+            return $http({
+                url: config.url + "/app/Course/types",
+                method: "GET",
+                params: {
+                    token:localStorageService.get("token")
+                }
+            }).then(function(data) {
+                return data.data.Response;
             })
         },
         // 发布课程
-        release: function(obj) {
+        release: function(course) {
             return $http({
-                url: config.url + "",
-                method: "GET",
-                params: {
+                url: config.url + "/app/Course/publish",
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                transformRequest: function(obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {
+                    "token": localStorageService.get("token"),
+                    "name": course.name,
+                    "count": course.capacity,
+                    "type_id": course.type.id,
+                    "teacher_id": course.teacher.id,
+                    "run_type": course.endless,
+                    "start_day": transformServices.transformDate(course.from),
+                    "end_day": transformServices.transformDate(course.to),
+                    "repetition": config.message.repeater[course.repeat],
+                    "time": transformServices.transformTimes(course.time,course.repeat),
+                    "address": course.address,
+                    "fee": course.money,
+                    "info": course.intro
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新课程
@@ -69,7 +103,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 查询学员信息 付费情况 _m_payment
@@ -81,7 +115,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 查询学员学习情况(review) 
@@ -93,7 +127,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 查询学员学习情况(review)详情
@@ -105,7 +139,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 发布学员学习情况(review)
@@ -117,7 +151,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 删除学员学习情况(review)
@@ -129,7 +163,7 @@ angular.module("WxCourse").factory("courseServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         }
     }

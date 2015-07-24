@@ -10,7 +10,7 @@
                 <div class="semi-auto semi-right-50 semi-left-50" style="min-height:51px">
                     <div class="semi-fixed-left semi-wide-50">
                         <div class="avatar avatar-sm">
-                            <img ng-src="../images/avatar_2.png" alt="">
+                            <img ng-src="{{teacher.avatar}}" alt="">
                         </div>
                     </div>
                     <div class="section section-condensed text-grey">
@@ -24,6 +24,12 @@
                 </div>
             </a>
             <div class="kk-line kk-horizon bg-light-grey"></div>
+        </div>
+        <div class="text-center" ng-show="teachers.length == 0">暂无添加老师</div>
+    </div>
+    <div class="scrollable-footer">
+        <div class="section">
+            <a ng-href="#/add_teacher" class="btn btn-danger block full-width bg-white text-red">增加老师 </a>
         </div>
     </div>
 </div>

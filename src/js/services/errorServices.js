@@ -26,7 +26,7 @@ angular.module("WxCourse").factory("errorServices",function($rootScope,$timeout,
 	            case 507:
 	            case 509:
 	            case 510:
-	                alert("服务器连接出错");
+	                this.autoHide("服务器连接出错");
 	                break;
 	            default:
 	                ;

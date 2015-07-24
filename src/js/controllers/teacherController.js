@@ -6,9 +6,9 @@ var teacherController = function($scope, $http, teacherServices, errorServices, 
     $scope.teacher.address = "深圳财富港国际中心D座";
     $scope.teacher.contact = "沈文涛";
     $scope.teacher.telephone = "13468132373";
-    teacherServices.queryById().then(function(data) {
+    // teacherServices.queryById().then(function(data) {
 
-    });
+    // });
     $scope.edit = function(m) {
         for (key in m) {
             $scope.editable_content = m[key];
@@ -16,3 +16,14 @@ var teacherController = function($scope, $http, teacherServices, errorServices, 
         SharedState.turnOn("editable_panel");
     }
 }
+angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope,localStorageService, config) {
+    $scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
+        flow.opts.target = config.url + "/app/UserCenter/updateAvatar";
+        flow.opts.testChunks = false;
+        flow.opts.fileParameterName = "avatar";
+        flow.opts.query = {
+            "token": localStorageService.get("token")
+        }
+        flow.upload();
+    })
+});
