@@ -4,35 +4,39 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div class="section" style="padding-bottom:0px">
-            <a ng-href="#/course" class="block text-black">
-                <div class="semi-auto semi-left-50" style="min-height:75px">
-                    <div class="semi-fixed-left semi-wide-50 text-center">
-                        <div class="avatar avatar-sm">
-                            <img ng-src="../images/avatar_2.png" alt="">
+        <div ng-repeat="course in courses">
+            <div class="section" style="padding-bottom:0px">
+                <a ng-href="#/course" class="block text-black">
+                    <div class="semi-auto semi-left-50" style="min-height:75px">
+                        <div class="semi-fixed-left semi-wide-50 text-center">
+                            <div class="avatar avatar-sm">
+                                <img ng-src="{{course.teacher.avatar}}" alt="">
+                            </div>
+                            <div class="text-red text-ellipsis">{{course.teacher.name}}</div>
                         </div>
-                        <div class="text-red">王五</div>
+                        <div class="section section-condensed">
+                            <div class="row">
+                                <div class="col-xs-6 text-ellipsis text-large">{{course.name}}</div>
+                                <div class="col-xs-6 text-red text-right text-ellipsis text-large">编号：{{course.id}}</div>
+                            </div>
+                            <div class="kk-line kk-horizon bg-light-grey" style="margin:5px 0"></div>
+                            <div class="line-ellipsis line-2">
+                                简介：{{course.intro}}
+                            </div>
+                        </div>
                     </div>
-                    <div class="section section-condensed">
-                        <div class="row">
-                            <div class="col-xs-6 text-ellipsis text-large">小学语文</div>
-                            <div class="col-xs-6 text-red text-right text-ellipsis text-large">编号：4444</div>
-                        </div>
-                        <div class="kk-line kk-horizon bg-light-grey" style="margin:5px 0"></div>
-                        <div class="line-ellipsis line-2">
-                            简介：Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro asperiores, aliquid sunt nulla accusamus dignissimos neque odio error cupiditate blanditiis alias cum beatae, ea ipsum? Voluptatibus sapiente, at rem laborum.
-                        </div>
-                    </div>
+                </a>
+                <div class="kk-line kk-horizon bg-light-grey" style="margin-top:5px"></div>
+                <div class="btn-group justified split-line">
+                    <a ng-href="#/course_setting" class="section text-center text-sm text-black">课程设置</a>
+                    <a ng-href="#/section_schedule" class="section text-center text-sm text-black">进度管理</a>
+                    <a ng-href="#/payments" class="section text-center text-sm text-black">学员信息</a>
                 </div>
-            </a>
-            <div class="kk-line kk-horizon bg-light-grey" style="margin-top:5px"></div>
-            <div class="btn-group justified split-line">
-            	<a ng-href="#/course_setting" class="section text-center text-sm text-black">课程设置</a>
-            	<a ng-href="#/section_schedule" class="section text-center text-sm text-black">进度管理</a>
-            	<a ng-href="#/payments" class="section text-center text-sm text-black">学员信息</a>
             </div>
+            <div class="kk-line kk-horizon"></div>
         </div>
-        <div class="kk-line kk-horizon"></div>
-		
+        <div class="section text-center">
+            <a ng-click="loadMore()" class="btn btn-default">{{load_more_message}}</a>
+        </div>
     </div>
 </div>

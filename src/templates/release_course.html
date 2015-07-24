@@ -246,7 +246,7 @@
                 <div class="kk-line kk-horizon"></div>
             </div>
             <div class="section">
-                <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid">发布</button>
+                <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid || course.teacher.id ==''">发布</button>
             </div>
         </form>
     </div>

@@ -15,20 +15,15 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
         },
         parseCourse: function(data) {
             var course = new _m_course();
-            course.id = "";
-            course.name = "";
-            course.type = "";
+            course.id = data.course_id;
+            course.name = data.name;
+            course.type = data.type;
 
-            course.capacity = "";
+            course.capacity = data.amount;
             course.apply_amount = "0";
             course.comment_amount = "0";
             course.like_amount = "0";
             course.is_like = "0";
-
-            course.teacher.name = "";
-            course.trainer.name = "";
-            course.comments = this.parseComments(data.comments);
-
             course.endless = "1";
             course.from = "";
             course.to = "";
@@ -36,8 +31,20 @@ angular.module("WxCourse").factory("parserServices", function(SharedState,config
             course.time = [];
             course.address = "";
             course.money = "";
-            course.intro = "";
+            course.intro = data.info;
             course.sections = "";
+
+            // teacher
+            course.teacher = {
+                id:data.teacher_id,
+                name:data.teacher_name,
+                avatar: data.avatar ? config.imageUrl+data.avatar:"../images/avatar_2.png"
+            }
+            // trainer
+            course.trainer.name = "";
+            // comment
+            course.comments = this.parseComments(data.comments);
+
             return course;
         },
         parseCourses: function(data) {

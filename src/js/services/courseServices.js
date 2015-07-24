@@ -13,12 +13,14 @@ angular.module("WxCourse").factory("courseServices", function($http,transformSer
             })
         },
         // 课程列表----根据培训方查询
-        queryByTrainer: function() {
+        queryByTrainer: function(page,page_size) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/List",
                 method: "GET",
                 params: {
-
+                    token:localStorageService.get("token"),
+                    pn:page,
+                    page_size:page_size
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -78,6 +80,7 @@ angular.module("WxCourse").factory("courseServices", function($http,transformSer
                     "token": localStorageService.get("token"),
                     "name": course.name,
                     "count": course.capacity,
+                    "course_count":course.section,
                     "type_id": course.type.id,
                     "teacher_id": course.teacher.id,
                     "run_type": course.endless,

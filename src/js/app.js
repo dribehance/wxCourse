@@ -64,12 +64,12 @@ angular.module('WxCourse', [
         .when('/courses', {
             templateUrl: 'courses.html',
             reloadOnSearch: false,
-            // controller: coursesController
+            controller: coursesController
         })
         .when('/course', {
             templateUrl: 'course.html',
             reloadOnSearch: false,
-            // controller: courseController
+            controller: courseController
         })
         .when('/teachers', {
             templateUrl: 'teachers.html',
@@ -99,7 +99,7 @@ angular.module('WxCourse', [
         .when('/section_schedule', {
             templateUrl: 'section_schedule.html',
             reloadOnSearch: false,
-            // controller: sectionScheduleController
+            controller: sectionScheduleController
         })
         .when('/payments', {
             templateUrl: 'payments.html',
@@ -114,12 +114,12 @@ angular.module('WxCourse', [
         .when('/record_schedule', {
             templateUrl: 'record_schedule.html',
             reloadOnSearch: false,
-            // controller: recordScheduleController
+            controller: recordScheduleController
         })
         .when('/history_schedule', {
             templateUrl: 'history_schedule.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: historyScheduleController
         })
         .when('/reviews', {
             templateUrl: 'reviews.html',

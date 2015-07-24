@@ -32,9 +32,9 @@ angular.module("WxCourse").factory("transformServices", function($http, $rootSco
 		transformTimes:function(times,repeater){
 			var time_strings = "";
 			for(var i =0;i<times.length;i++) {
-				time_strings += this.transformTime(times[i],repeater)+",";
+				time_strings += this.transformTime(times[i],repeater)+"、";
 			}
-			return time_strings.substring(0,time_strings.length-1);
+			return "{"+time_strings.substring(0,time_strings.length-1)+"}";
 		},
 		transformDate:function(date) {
 			if(!date){
@@ -42,7 +42,8 @@ angular.module("WxCourse").factory("transformServices", function($http, $rootSco
 			}
 			var date_string = "",
 				year_string = date.getFullYear(),
-				month_string = date.getMonth()+1<10?"0"+date.getMonth()+1:date.getMonth(),
+				month_string = date.getMonth()+1;
+				month_string = month_string <10?"0"+date.getMonth():date.getMonth(),
 				date_string = date.getDate()<10?"0"+date.getDate():date.getDate();
 			return year_string +"-"+month_string+"-"+date_string;
 		}
