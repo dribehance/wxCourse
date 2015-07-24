@@ -1,10 +1,9 @@
-var coursesController = function($scope, parserServices, courseServices, errorServices, toastServices, config) {
-
+var commentsController = function($scope,$routeParams, parserServices, commentServices, errorServices, toastServices, config) {
     // multiy page load
     var page = 1,
-        page_size = 10,
+        page_size = 5,
         no_more = false;
-    $scope.courses = [];
+    $scope.comments = [];
     $scope.load_more_message = "点击加载更多";
     $scope.loadMore = function() {
 
@@ -14,18 +13,19 @@ var coursesController = function($scope, parserServices, courseServices, errorSe
         }
         toastServices.show();
         $scope.load_more_message = "加载中...";
-        courseServices.queryByTrainer(page, page_size).then(function(data) {
+        commentServices.query(page, page_size,$routeParams.course_id).then(function(data) {
             toastServices.hide();
+            $scope.comment_amount = data.totalRow;
             $scope.load_more_message = "点击加载更多";
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-                $scope.courses = $scope.courses.concat(parserServices.parseCourses(data.Courses.list));
+                $scope.comments = $scope.comments.concat(parserServices.parseComments(data.Comments.list));
             }
-            if (page < data.Courses.totalPage) {
+            if (page < data.Comments.totalPage) {
                 page++;
             } else {
                 no_more = true;
             }
-            if (data.Courses.totalPage == 0) {
+            if (data.Comments.totalPage == 0) {
                 $scope.load_more_message = "OooO,没有了!";
             }
         })

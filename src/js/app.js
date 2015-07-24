@@ -146,10 +146,10 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: tutorialController
         })
-        .when('/comments', {
+        .when('/comments/:course_id', {
             templateUrl: 'comments.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: commentsController
         })
         .when('/release_comment', {
             templateUrl: 'release_comment.html',

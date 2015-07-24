@@ -1,15 +1,15 @@
-angular.module("WxCourse").factory("studentServices", function($http, config) {
-	return {
-		// 查询学生信息
+angular.module("WxCourse").factory("studentServices", function($http, localStorageService, config) {
+    return {
+        // 查询学生信息
         query: function() {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/UserCenter/info",
                 method: "GET",
                 params: {
-
+                    token: localStorageService
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新头像
@@ -21,7 +21,7 @@ angular.module("WxCourse").factory("studentServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新昵称
@@ -33,7 +33,7 @@ angular.module("WxCourse").factory("studentServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
         // 更新昵称
@@ -45,8 +45,8 @@ angular.module("WxCourse").factory("studentServices", function($http, config) {
 
                 }
             }).then(function(data) {
-                return data.data;
+                return data.data.Response;
             })
         },
-	}
+    }
 });

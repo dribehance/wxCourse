@@ -38,12 +38,13 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
             })
         },
         // 删除老师
-        remove: function() {
+        remove: function(teacher_id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Organization/deleteTeacher",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token"),
+                    "teacher_id":teacher_id
                 }
             }).then(function(data) {
                 return data.data.Response;

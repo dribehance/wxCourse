@@ -1,8 +1,10 @@
-var teacherController = function($scope, $routeParams, teacherServices, parserServices, errorServices, toastServices, SharedState, config) {
+var teacherController = function($rootScope, $scope, $routeParams, teacherServices, parserServices, errorServices, toastServices, SharedState, config) {
 
     teacherServices.queryById($routeParams.teacher_id).then(function(data) {
         if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
             $scope.teacher = parserServices.parseTeacher(data);
+        } else {
+            errorServices.autoHide("服务器错误")
         }
     });
     $scope.input = {
@@ -15,6 +17,15 @@ var teacherController = function($scope, $routeParams, teacherServices, parserSe
             $scope.input.editable_content = m[key];
         }
         SharedState.turnOn("editable_panel");
+    }
+    $scope.remove = function() {
+        teacherServices.remove($routeParams.teacher_id).then(function(data) {
+            if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+                $rootScope.back();
+            } else {
+                errorServices.autoHide("服务器错误")
+            }
+        });
     }
 }
 angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope, localStorageService, config) {

@@ -43,6 +43,8 @@ var _m_course = function() {
     // money 费用标准
     // intro 课程简介
     // section 总节数
+
+    // is_apply 0:未申请 1:已申请
     return {
         "id": "",
         "name": "小学语文",
@@ -58,6 +60,8 @@ var _m_course = function() {
         "trainer": new _m_trainer(),
         "comments": [],
 
+        "release_time":"",
+
         "endless": "1",
         "from": new Date(2015, 1 - 1, 1),
         "to": new Date(2015, 1 - 1, 1),
@@ -66,7 +70,9 @@ var _m_course = function() {
         "address": "",
         "money": "",
         "intro": "",
-        "section": ""
+        "section": "",
+
+        "is_apply":"0"
     }
 }
 var _m_course_type = function() {
@@ -191,6 +197,7 @@ var _m_message = function() {
 }
 var _m_comment = function() {
     return {
+        "id":"",
         "by": "",
         "release_time": "",
         "content": ""

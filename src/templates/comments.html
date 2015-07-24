@@ -4,41 +4,31 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div class="comment">
+        <div class="comment" ng-repeat="comment in comments">
             <div class="section section-wide section-sm bg-light-grey">
                 <div class="semi-auto semi-right-40 text-ellipsis">
                     <div class="kk-line kk-vertical"></div>
-                    <span class="text-red">课程评价(10)</span>
+                    <span class="text-red">课程评价({{comment_amount}})</span>
                 </div>
             </div>
             <div class="kk-line kk-horizon"></div>
             <div class="section">
                 <div class="row">
                     <div class="col-xs-6 text-ellipsis text-red">
-                        洋洋
+                        {{comment.by}}
                     </div>
                     <div class="col-xs-6 text-ellipsis text-right">
-                        发表时间：2015-06-24
+                        发表时间：{{comment.release_time}}
                     </div>
                 </div>
                 <div class="">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.
+                    {{comment.content}}
                 </div>
             </div>
             <div class="kk-line kk-horizon"></div>
-            <div class="section">
-                <div class="row">
-                    <div class="col-xs-6 text-ellipsis text-red">
-                        洋洋
-                    </div>
-                    <div class="col-xs-6 text-ellipsis text-right">
-                        发表时间：2015-06-24
-                    </div>
-                </div>
-                <div class="">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis aliquam quasi quis molestiae optio vel, dolorem amet nulla quam a. Autem odit maiores facere ut sunt sed quisquam modi ullam.
-                </div>
-            </div>
+        </div>
+        <div class="section text-center">
+            <a ng-click="loadMore()" class="btn btn-default">{{load_more_message}}</a>
         </div>
     </div>
     <div class="scrollable-footer">

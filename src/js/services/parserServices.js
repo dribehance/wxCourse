@@ -19,10 +19,10 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             course.name = data.name;
 
             course.capacity = data.count;
-            course.apply_amount = "0";
-            course.comment_amount = "0";
-            course.like_amount = "0";
-            course.is_like = "0";
+            course.apply_amount = data.apply_count || "0";
+            course.comment_amount = data.comment_count || "0";
+            course.like_amount = data.zans_count || "0";
+            course.is_like = data.is_zan || "0";
             course.endless = data.run_type || "0";
             course.from = this.parseDate(data.start_day);
             course.to = this.parseDate(data.end_day);
@@ -32,6 +32,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             course.money = data.fee;
             course.intro = data.info;
             course.section = data.course_count;
+            course.release_time = data.publish_time || "刚刚";
             // type
             course.type = {
                 id: data.type_id,
@@ -44,10 +45,11 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
                 avatar: data.avatar ? config.imageUrl + data.avatar : "../images/avatar_2.png"
             };
             // trainer
-            course.trainer.name = "";
+            course.trainer.name = data.company_name;
             // comment
             course.comments = this.parseComments(data.comments);
-
+            // apply status
+            course.is_apply = data.is_apply || "0"; 
             return course;
         },
         parseCourses: function(data) {
@@ -117,9 +119,10 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
         },
         parseComment: function(data) {
             var comment = new _m_comment();
-            comment.by = "";
-            comment.release_time = new Date("1900,01,01");
-            comment.content = "";
+            comment.id = data.comment_id;
+            comment.by = data.nickname;
+            comment.release_time = data.post_date;
+            comment.content = data.content;
             return comment;
         },
         parseComments: function(data) {
