@@ -1,33 +1,20 @@
-var attendanceScheduleController = function($scope, scheduleServices, parserServices, errorServices, toastServices, SharedState, config) {
-    // scheduleServices.queryAttendance().then(function(data) {
-    //     $scope.attendances = parserServices.parseSchedule.attendance(data);
-    // })
-	$scope.attend = function(attendance) {
-		attendance.status = attendance.status == "1"?"0":"1";
-	}
-    $scope.attendances = [{
-        "id": "0",
-        "status": "0",
-        "student": {
-            "name": "张三",
-            "type": "语文",
-            "intro": "简介"
+var attendanceScheduleController = function($scope, $routeParams, scheduleServices, parserServices, errorServices, toastServices, SharedState, config) {
+    scheduleServices.queryAttendance($routeParams.course_id, $routeParams.section).then(function(data) {
+        if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+            $scope.attendances = parserServices.parseSchedule.attendances(data.users);
+        } else {
+            errorServices.autoHide("服务器错误")
         }
-    }, {
-        "id": "0",
-        "status": "1",
-        "student": {
-            "name": "张三",
-            "type": "语文",
-            "intro": "简介"
-        }
-    }, {
-        "id": "0",
-        "status": "0",
-        "student": {
-            "name": "张三",
-            "type": "语文",
-            "intro": "简介"
-        }
-    }];
+
+    })
+    $scope.attend = function(attendance) {
+        scheduleServices.attend(attendance,$routeParams.course_id, $routeParams.section).then(function(data) {
+            if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+                attendance.status = attendance.status == "1" ? "0" : "1";
+            } else {
+                errorServices.autoHide("服务器错误")
+            }
+            
+        })
+    }
 }

@@ -6,18 +6,6 @@
     <div class="scrollable-content">
         <div flow-init="{singleFile:true}" ng-controller="studentUploadController">
         	
-            <!--登录账号  -->
-            <div class="student-teacher">
-                <div class="section" ng-click="choose()">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
-                            <span class="btn section-wide">登录账号</span>
-                        </span>
-                        <div class="form-control flat full-width text-right">7758258</div>
-                    </div>
-                </div>
-                <div class="kk-line kk-horizon"></div>
-            </div>
             <!-- 头像 -->
             <div class="student-avatar" >
                 <div class="section" style="min-height:55px;">
@@ -40,13 +28,13 @@
                 <div class="kk-line kk-horizon"></div>
             </div>
             <!-- 昵称 -->
-            <div class="student-nickname">
-                <div class="section student-nickname">
+            <div class="student-name">
+                <div class="section student-name">
                     <div class="semi-auto semi-left-70 semi-right-40">
                         <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">昵称</span>
                         </span>
-                        <input type="text" name="nickname" class="form-control flat full-width text-right" ng-model="student.nickname" required placeholder="请输入昵称">
+                        <input type="text" name="name" class="form-control flat full-width text-right" ng-model="student.name" required placeholder="请输入昵称">
                         <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>

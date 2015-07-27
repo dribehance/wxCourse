@@ -96,17 +96,17 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: courseSettingController
         })
-        .when('/section_schedule', {
+        .when('/section_schedule/:course_id', {
             templateUrl: 'section_schedule.html',
             reloadOnSearch: false,
             controller: sectionScheduleController
         })
-        .when('/payments', {
+        .when('/payments/:course_id', {
             templateUrl: 'payments.html',
             reloadOnSearch: false,
             controller: paymentController
         })
-        .when('/attendance_schedule', {
+        .when('/attendance_schedule/:course_id/:section', {
             templateUrl: 'attendance_schedule.html',
             reloadOnSearch: false,
             controller: attendanceScheduleController
@@ -121,17 +121,17 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: historyScheduleController
         })
-        .when('/reviews', {
+        .when('/reviews/:course_id/:student_id', {
             templateUrl: 'reviews.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: reviewsController
         })
-        .when('/reviews/:reviewId', {
+        .when('/reviews/:review_id', {
             templateUrl: 'review.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: reviewController
         })
-        .when('/release_review', {
+        .when('/release_review/:student_id/:course_id', {
             templateUrl: 'release_review.html',
             reloadOnSearch: false,
             controller: releaseReviewController

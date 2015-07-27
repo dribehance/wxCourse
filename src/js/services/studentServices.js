@@ -6,7 +6,7 @@ angular.module("WxCourse").factory("studentServices", function($http, localStora
                 url: config.url + "/app/UserCenter/info",
                 method: "GET",
                 params: {
-                    token: localStorageService
+                    token: localStorageService.get("token")
                 }
             }).then(function(data) {
                 return data.data.Response;

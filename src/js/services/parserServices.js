@@ -49,7 +49,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             // comment
             course.comments = this.parseComments(data.comments);
             // apply status
-            course.is_apply = data.is_apply || "0"; 
+            course.is_apply = data.is_apply || "0";
             return course;
         },
         parseCourses: function(data) {
@@ -157,14 +157,21 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             },
             attendance: function(data) {
                 var attendance = new _m_schedule.attendance();
-                attendance.id = "";
-                attendance.status = "0";
+                attendance.id = data.user_id;
+                attendance.status = data.signup;
                 attendance.entrance_time = "";
-                attendance.student.name = "";
-                attendance.student.avatar = "";
-                attendance.student.telephone = "";
-                attendance.student.status = "";
+                attendance.student.name = data.nickname;
+                attendance.student.avatar = data.avatar;
+                attendance.student.telephone = data.telephone;
                 return attendance;
+            },
+            attendances: function(data) {
+                var attendances = [];
+                for (var i = 0; i < data.length; i++) {
+                    var attendance = this.attendance(data[i]);
+                    attendances.push(attendance);
+                }
+                return attendances;
             },
             history: function(data) {
                 var history = new _m_schedule.history();
@@ -175,20 +182,36 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
         },
         parsePayment: function(data) {
             var payment = new _m_payment();
-            payment.status = "0";
-            payment.entrance_time = "";
-            payment.student.name = "";
-            payment.student.avatar = "";
-            payment.student.telephone = "";
+            payment.id = data.apply_id;
+            payment.status = data.status;
+            payment.entrance_time = data.post_time;
+            // student 
+            payment.student = {
+                id : data.user_id,
+                name : data.nickname,
+                avatar : data.avatar,
+                telephone : data.telephone,
+            }
+            payment.course = {
+                id: ""
+            }
             return payment;
+        },
+        parsePayments: function(data) {
+            var payments = [];
+            for (var i = 0; i < data.length; i++) {
+                var payment = this.parsePayment(data[i]);
+                payments.push(payment);
+            }
+            return payments;
         },
         parseStudent: function(data) {
             var student = new _m_student();
-            student.id = "";
-            student.name = "";
-            student.avatar = "";
-            student.sex = "";
-            student.telephone = "";
+            student.id = data.user_id;
+            student.name = data.nickname;
+            student.avatar = data.avatar;
+            student.sex = data.sex;
+            student.telephone = data.telephone;
             return student;
         },
         parseTeacher: function(data) {
@@ -226,12 +249,30 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
         },
         parseReview: function(data) {
             var review = new _m_review();
-            review.id = "",
-                review.by = "";
-            review.release_time = "";
-            review.title = "";
-            review.content = "";
+            review.id = data.learn_id;
+            review.by = data.course_name;
+            review.name = data.course_name;
+            review.release_time = data.post_date;
+            review.title = data.title;
+            review.content = data.content;
+            review.images = this.parseReviewImages(data.pic);
             return review;
+        },
+        parseReviews: function(data) {
+            var reviews = [];
+            for (var i = 0; i < data.length; i++) {
+                var review = this.parseReview(data[i]);
+                reviews.push(review);
+            }
+            return reviews;
+        },
+        parseReviewImages:function(images) {
+            // console.log(images)
+            images = images || [];
+            images.map(function(image){
+                image.name =config.imageUrl + image.name;
+            });
+            return images;
         }
     }
 });

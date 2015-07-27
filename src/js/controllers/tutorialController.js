@@ -51,7 +51,7 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
         $scope.load_more_message = "加载中...";
         commentServices.query(page, page_size, $routeParams.tutorial_id).then(function(data) {
             toastServices.hide();
-            $scope.comment_amount = data.totalRow;
+            $scope.comment_amount = data.Comments.totalRow || 0;
             $scope.load_more_message = "点击加载更多";
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 $scope.comments = $scope.comments.concat(parserServices.parseComments(data.Comments.list));

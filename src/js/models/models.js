@@ -159,6 +159,7 @@ var _m_payment = function() {
     return {
         "status": "0",
         "student": new _m_student(),
+        "course": new _m_course()
     }
 }
 var _m_student = function() {
@@ -207,8 +208,10 @@ var _m_review = function() {
     return {
         "id": "",
         "by": "",
+        "name":"",
         "title": "",
         "content": "",
         "release_time": "",
+        "images":[]
     }
 }

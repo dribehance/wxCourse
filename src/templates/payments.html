@@ -5,31 +5,31 @@
 <div class="scrollable">
     <div class="scrollable-header">
         <div class="section bg-light-grey">
-            报名学生：5人，其中1人未缴费
+            报名学生：{{payment.total}}人，其中{{payment.unpay}}人未缴费
         </div>
     </div>
     <div class="scrollable-content">
-        <a ng-href="#/reviews" class="block" ng-repeat="payment in payments">
+        <div ng-repeat="payment in payments">
 
             <div class="section block">
-                <div class="semi-auto semi-right-50 semi-left-50" style="min-height:51px">
+                <div class="semi-auto semi-right-80 semi-left-50" style="min-height:51px">
                     <div class="semi-fixed-left semi-wide-50">
                         <div class="avatar avatar-sm">
                             <img ng-src="../images/avatar_2.png" alt="">
                         </div>
                     </div>
-                    <div class="section section-condensed text-grey">
+                    <a ng-href="#/reviews/{{course_id}}/{{payment.student.id}}" class="block section section-condensed text-grey">
                         <div class="text-black text-ellipsis">{{ payment.student.name }}</div>
-                        <div class="text-ellipsis">培训类别：{{ payment.student.type }}</div>
-                        <div class="text-ellipsis">个人简介：{{ payment.student.intro }}</div>
-                    </div>
+                        <div class="text-ellipsis">报名时间：{{ payment.entrance_time}}</div>
+                        <div class="text-ellipsis">联系方式：{{ payment.student.telephone }}</div>
+                    </a>
                     <div class="semi-fixed-right semi-wide-80 text-center" style="margin-top:7px">
-                        <span ng-click="pay(payment)" class="btn btn-default" ng-show="payment.status!=1">缴费</span>
-                        <span ng-click="pay(payment)" class="btn btn-success bg-white text-success" ng-show="payment.status==1">取消缴费</span>
+                        <span ng-click="pay(payment,course_id)" class="btn btn-default" ng-show="payment.status!=1">缴费</span>
+                        <span ng-click="pay(payment,course_id)" class="btn btn-success bg-white text-success" ng-show="payment.status==1">取消缴费</span>
                     </div>
                 </div>
             </div>
             <div class="kk-line kk-horizon bg-light-grey"></div>
-        </a>
+        </div>
     </div>
 </div>

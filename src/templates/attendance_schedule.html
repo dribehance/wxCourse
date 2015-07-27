@@ -15,8 +15,8 @@
                     </div>
                     <div class="section section-condensed text-grey">
                         <div class="text-black text-ellipsis">{{ attendance.student.name }}</div>
-                        <div class="text-ellipsis">培训类别：{{ attendance.student.type }}</div>
-                        <div class="text-ellipsis">个人简介：{{ attendance.student.intro }}</div>
+                        <div class="text-ellipsis">报名时间：{{ attendance.student.entrance_time }}</div>
+                        <div class="text-ellipsis">个人简介：{{ attendance.student.telephone }}</div>
                     </div>
                     <div class="semi-fixed-right semi-wide-80 text-center" style="margin-top:7px">
                         <a ng-click="attend(attendance)" class="btn btn-default" ng-show="attendance.status!=1">签到</a>

@@ -6,44 +6,9 @@
     <div class="scrollable-content">
         <div class="section bg-light-grey">
             <div class="row">
-                <a ng-href="#/attendance_schedule" class="block col-xs-4" style="margin-bottom:5px;">
+                <a ng-href="#/attendance_schedule/{{course_id}}/{{$index+1}}" ng-repeat="section in sections track by $index" class="block col-xs-4" style="margin-bottom:5px;">
                     <div class="btn full-width bg-grey text-white text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
-                    </div>
-                </a>
-                <a class="block col-xs-4" style="margin-bottom:5px;">
-                    <div class="btn full-width bg-white text-grey text-center text-ellipsis">
-                        第一节
+                        第{{$index+1}}节
                     </div>
                 </a>
             </div>

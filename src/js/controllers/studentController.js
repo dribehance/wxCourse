@@ -1,11 +1,11 @@
-var studentController = function($scope, $rootScope, studentServices,parserServices, userServices, errorServices, localStorageService) {
+var studentController = function($scope, $rootScope, studentServices, parserServices, userServices, errorServices, localStorageService, config) {
     $scope.logout = function() {
         userServices.logout();
         $rootScope.back()
     }
     studentServices.query().then(function(data) {
         if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-            $scope.student = parserServices.parseStudent(data.Courses.list);
+            $scope.student = parserServices.parseStudent(data.user);
         } else {
             errorServices.autoHide("服务器错误")
         }

@@ -151,60 +151,72 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
             })
         },
         // 查询学员信息 付费情况 _m_payment
-        queryStudentByCourse: function(obj) {
+        queryStudentByCourse: function(course_id,page, page_size ) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/applyList",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token"),
+                    "pn":page,
+                    "page_size":page_size,
+                    "course_id":course_id
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 查询学员学习情况(review) 
-        queryReviewByStudent: function(obj) {
+        queryReviewByStudent: function(student_id,course_id,page,page_size) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/situation",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token"),
+                    "pn":page,
+                    "page_size":page_size,
+                    "course_id":course_id,
+                    "user_id":student_id
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 查询学员学习情况(review)详情
-        queryReviewById: function(obj) {
+        queryReviewById: function(review_id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/situationDetails",
                 method: "GET",
                 params: {
-
+                   "token": localStorageService.get("token"),
+                   "learn_id": review_id 
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 发布学员学习情况(review)
-        releaseReview: function(obj) {
+        releaseReview: function(review) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/commitSituation",
                 method: "GET",
                 params: {
-
+                    // "token": localStorageService.get("token"),
+                    // "title": review.title,
+                    // "content"
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 删除学员学习情况(review)
-        removeReview: function() {
+        removeReview: function(review) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/deleteSituation",
                 method: "GET",
                 params: {
-
+                   "token": localStorageService.get("token"),
+                   "user_id":review.student_id,
+                   "course_id":review.course_id 
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -223,7 +235,7 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 method: "GET",
                 params: {
                     "token": localStorageService.get("token"),
-                    "course_id":course_id
+                    "course_id": course_id
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -235,7 +247,7 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 method: "GET",
                 params: {
                     "token": localStorageService.get("token"),
-                    "course_id":course_id
+                    "course_id": course_id
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -247,7 +259,39 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 method: "GET",
                 params: {
                     "token": localStorageService.get("token"),
-                    "course_id":course_id
+                    "course_id": course_id
+                }
+            }).then(function(data) {
+                return data.data.Response;
+            })
+        },
+        pay:function(payment,course_id){
+            if (payment.status == "1") {
+                return this._cancel_pay(payment,course_id)
+            }
+            return this._pay(payment,course_id)
+        },
+        _pay:function(payment,course_id){
+            return $http({
+                url: config.url + "/app/Course/pay",
+                method: "GET",
+                params: {
+                    "token": localStorageService.get("token"),
+                    "course_id": course_id,
+                    "user_id":payment.student.id
+                }
+            }).then(function(data) {
+                return data.data.Response;
+            })
+        },
+        _cancel_pay:function(payment,course_id){
+            return $http({
+                url: config.url + "/app/Course/unpay",
+                method: "GET",
+                params: {
+                    "token": localStorageService.get("token"),
+                    "course_id": course_id,
+                    "user_id":payment.student.id
                 }
             }).then(function(data) {
                 return data.data.Response;
