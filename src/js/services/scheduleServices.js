@@ -28,24 +28,29 @@ angular.module("WxCourse").factory("scheduleServices", function($http, localStor
             })
         },
         // 课程计划 统计记录 按人
-        queryRecord: function() {
+        queryRecord: function(course_id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/genaralView",
                 method: "GET",
                 params: {
-
+                    "token": localStorageService.get("token"),
+                    "course_id":course_id,
+                    "pn":1,
+                    "page_size":1000
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 课程计划 统计学生每节课程到课情况 按时间(节)
-        queryHistory: function() {
+        queryHistory: function(user_id,course_id) {
             return $http({
-                url: config.url + "",
+                url: config.url + "/app/Course/genaralViewOfStudent",
                 method: "GET",
                 params: {
-
+                    "token":localStorageService.get("token"),
+                    "user_id":user_id,
+                    "course_id":course_id
                 }
             }).then(function(data) {
                 return data.data.Response;

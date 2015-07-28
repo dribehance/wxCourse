@@ -149,11 +149,19 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             },
             record: function(data) {
                 var record = new _m_schedule.record();
-                record.id = "";
-                record.name = "";
-                record.total = "0";
-                record.actual = "0";
+                record.id = data.user_id;
+                record.name = data.nickname;
+                record.total = data.total_count;
+                record.actual = data.person_count;
                 return record;
+            },
+            records: function(data) {
+                var records = [];
+                for (var i = 0; i < data.length; i++) {
+                    var record = this.record(data[i]);
+                    records.push(record);
+                }
+                return records;
             },
             attendance: function(data) {
                 var attendance = new _m_schedule.attendance();
@@ -175,10 +183,18 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             },
             history: function(data) {
                 var history = new _m_schedule.history();
-                history.day = "";
-                history.status = "";
+                history.day = data.post_date;
+                history.status = data.signup;
                 return history;
-            }
+            },
+            historys: function(data) {
+                var historys = [];
+                for (var i = 0; i < data.length; i++) {
+                    var history = this.history(data[i]);
+                    historys.push(history);
+                }
+                return historys;
+            },
         },
         parsePayment: function(data) {
             var payment = new _m_payment();
@@ -209,7 +225,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             var student = new _m_student();
             student.id = data.user_id;
             student.name = data.nickname;
-            student.avatar = data.avatar;
+            student.avatar = data.avatar ? config.imageUrl + data.avatar : "../images/avatar_2.png";;
             student.sex = data.sex;
             student.telephone = data.telephone;
             return student;

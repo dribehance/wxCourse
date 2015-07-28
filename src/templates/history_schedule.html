@@ -13,19 +13,22 @@
         </div>
     </div>
     <div class="scrollable-content">
-        <div class="section">
-            <a ng-href="#/history_schedule" class="block row text-black">
-                <div class="col-xs-4 text-center"><span class="btn">2015-06-03</span></div>
+        <div ng-repeat="history in historys" ng-show="historys.length>0">
+            <div class="section">
+            <div class="block row text-black">
+                <div class="col-xs-4 text-center"><span class="btn">{{history.day}}</span></div>
                 <div class="col-xs-4 text-center">
-                	<i class="kk kk-28 kk-check"></i>
+                    <i class="kk kk-28 kk-check" ng-show="history.status == '1'"></i>
                 </div>
                 <div class="col-xs-4 text-center">
-                	<i class="kk kk-28 kk-check"></i>
+                    <i class="kk kk-28 kk-check" ng-show="history.status != '1'"></i>
                 </div>
-            </a>
+            </div>
         </div>
         <div class="kk-line kk-horizon bg-light-grey"></div>
-        <div class="section">
+        </div>
+        <div class="text-center" ng-show="!historys.length>0">暂无签到情况</div>
+        <!-- <div class="section">
             <a ng-href="#/history_schedule" class="block row text-black">
                 <div class="col-xs-4 text-center"><span class="btn">2015-06-03</span></div>
                 <div class="col-xs-4 text-center">
@@ -35,6 +38,6 @@
                 	<i class="kk kk-28 kk-check"></i>
                 </div>
             </a>
-        </div>
+        </div> -->
     </div>
 </div>

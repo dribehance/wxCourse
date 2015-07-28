@@ -4,7 +4,7 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div ng-repeat="attendance in attendances">
+        <div ng-repeat="attendance in attendances" ng-show="attendances.length>0">
 
             <div class="section block">
                 <div class="semi-auto semi-right-50 semi-left-50" style="min-height:51px">
@@ -26,5 +26,6 @@
             </div>
             <div class="kk-line kk-horizon bg-light-grey"></div>
         </div>
+        <div class="text-center" ng-show="!attendances.length>0">暂无报名学生</div>
     </div>
 </div>

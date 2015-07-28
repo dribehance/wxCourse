@@ -4,6 +4,22 @@
 </div>
 <div class="scrollable">
 	<div class="scrollable-content">
-		在线反馈
+		<form name="consultForm" ng-submit="ajaxForm()">
+            <div class="section">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">内容</span>
+                    </span>
+                    <textarea name="consult_content" id="" rows="8" class="form-control flat full-width block" ng-model="consult.content" required placeholder="请输入内容"></textarea>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    <i class="kk kk-edit kk-24"></i>
+                </span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section text-right">
+                <button type="submit" class="btn btn-primary" ng-disabled="consultForm.$invalid">发表</button>
+            </div>
+        </form>
 	</div>
 </div>

@@ -41,6 +41,20 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 return data.data.Response;
             })
         },
+        // 课程列表--- 学生报名
+        queryByStudent: function(page, page_size) {
+            return $http({
+                url: config.url + "/app/Course/listForUser",
+                method: "GET",
+                params: {
+                    token: localStorageService.get("token"),
+                    pn: page,
+                    page_size: page_size
+                }
+            }).then(function(data) {
+                return data.data.Response;
+            })
+        },
         // 课程详情--课程设置
         queryById: function(id) {
             return $http({

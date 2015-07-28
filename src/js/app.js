@@ -66,7 +66,7 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: coursesController
         })
-        .when('/course', {
+        .when('/courses/:course_id', {
             templateUrl: 'course.html',
             reloadOnSearch: false,
             controller: courseController
@@ -111,17 +111,17 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: attendanceScheduleController
         })
-        .when('/record_schedule', {
+        .when('/record_schedule/:course_id', {
             templateUrl: 'record_schedule.html',
             reloadOnSearch: false,
             controller: recordScheduleController
         })
-        .when('/history_schedule', {
+        .when('/history_schedule/:record_id/:course_id', {
             templateUrl: 'history_schedule.html',
             reloadOnSearch: false,
             controller: historyScheduleController
         })
-        .when('/reviews/:course_id/:student_id', {
+        .when('/reviews/:student_id/:course_id', {
             templateUrl: 'reviews.html',
             reloadOnSearch: false,
             controller: reviewsController
@@ -151,15 +151,15 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: commentsController
         })
-        .when('/release_comment', {
+        .when('/release_comment/:course_id', {
             templateUrl: 'release_comment.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: releaseCommentController
         })
         .when('/my_courses', {
             templateUrl: 'my_courses.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: myCoursesController
         })
         .when('/my_courses/:course_id', {
             templateUrl: 'my_course.html',
@@ -175,6 +175,11 @@ angular.module('WxCourse', [
             templateUrl: 'my_review.html',
             reloadOnSearch: false,
             // controller: historyScheduleController
+        })
+        .when('/consult', {
+            templateUrl: 'consult.html',
+            reloadOnSearch: false,
+            controller: consultController
         })
         .otherwise({
             redirectTo: "/index"

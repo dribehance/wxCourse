@@ -3,13 +3,13 @@
     <span class="btn" ng-click="back()">返回</span>
 </div>
 <div class="scrollable">
-    <div class="scrollable-header">
+    <div class="scrollable-header" ng-show="payments.length>0">
         <div class="section bg-light-grey">
             报名学生：{{payment.total}}人，其中{{payment.unpay}}人未缴费
         </div>
     </div>
     <div class="scrollable-content">
-        <div ng-repeat="payment in payments">
+        <div ng-repeat="payment in payments" ng-show="payments.length>0">
 
             <div class="section block">
                 <div class="semi-auto semi-right-80 semi-left-50" style="min-height:51px">
@@ -18,7 +18,7 @@
                             <img ng-src="../images/avatar_2.png" alt="">
                         </div>
                     </div>
-                    <a ng-href="#/reviews/{{course_id}}/{{payment.student.id}}" class="block section section-condensed text-grey">
+                    <a ng-href="#/reviews/{{payment.student.id}}/{{course_id}}" class="block section section-condensed text-grey">
                         <div class="text-black text-ellipsis">{{ payment.student.name }}</div>
                         <div class="text-ellipsis">报名时间：{{ payment.entrance_time}}</div>
                         <div class="text-ellipsis">联系方式：{{ payment.student.telephone }}</div>
@@ -31,5 +31,6 @@
             </div>
             <div class="kk-line kk-horizon bg-light-grey"></div>
         </div>
+        <div class="text-center" ng-show="!payments.length>0">暂无报名学生</div>
     </div>
 </div>

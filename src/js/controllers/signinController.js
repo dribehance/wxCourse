@@ -16,6 +16,7 @@ var signinController = function($scope, $route, $location, localStorageService, 
             if (data.code == config.request.SUCCESS && data.status == "3") {
                 localStorageService.set("token", data.token);
                 localStorageService.set("role", data.type);
+                localStorageService.set("user_id", data.user_id);
                 if (localStorageService.get("role") == config.role.STUDENT) {
                     $location.path("/student").replace();
                 } else {

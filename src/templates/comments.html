@@ -4,14 +4,13 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-        <div class="comment" ng-repeat="comment in comments">
-            <div class="section section-wide section-sm bg-light-grey">
-                <div class="semi-auto semi-right-40 text-ellipsis">
-                    <div class="kk-line kk-vertical"></div>
-                    <span class="text-red">课程评价({{comment_amount}})</span>
-                </div>
+        <div class="section section-wide section-sm bg-light-grey">
+            <div class="semi-auto semi-right-40 text-ellipsis">
+                <div class="kk-line kk-vertical"></div>
+                <span class="text-red">课程评价({{comment_amount}})</span>
             </div>
-            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="comment" ng-repeat="comment in comments">
             <div class="section">
                 <div class="row">
                     <div class="col-xs-6 text-ellipsis text-red">
@@ -33,7 +32,7 @@
     </div>
     <div class="scrollable-footer">
         <div class="section">
-            <a ng-href="#/release_comment" class="btn btn-default block full-width">发布评论 </a>
+            <a ng-href="#/release_comment/{{course_id}}" class="btn btn-default block full-width">发布评论 </a>
         </div>
     </div>
 </div>

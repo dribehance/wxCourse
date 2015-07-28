@@ -39,6 +39,7 @@ angular.module("WxCourse").factory("userServices", function($http, config, local
             localStorageService.remove("token");
             localStorageService.remove("role");
             localStorageService.remove("authen");
+            localStorageService.remove("user_id");
         },
         checkAuth: function() {
             if (localStorageService.get("token")) {
