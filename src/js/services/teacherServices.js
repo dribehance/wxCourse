@@ -70,39 +70,42 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
             }
         },
         // 更新培训类型
-        updateType: function(obj) {
+        updateType: function(obj,teacher_id) {
             return $http({
-                url: config.url + "/app/Organization/updateType",
+                url: config.url + "/app/UserCenter/updateTeacherType",
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token"),
-                    "type":obj.type
+                    "type":obj.type,
+                    "teacher_id":teacher_id
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 更新老师名称
-        updateName: function(obj) {
+        updateName: function(obj,teacher_id) {
             return $http({
-                url: config.url + "/app/Organization/updateCompanyName",
+                url: config.url + "/app/UserCenter/updateTeacherNickname",
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token"),
-                    "company_name":obj.name
+                    "company_name":obj.name,
+                    "teacher_id":teacher_id
                 }
             }).then(function(data) {
                 return data.data.Response;
             })
         },
         // 更新老师简介
-        updateIntro: function(obj) {
+        updateIntro: function(obj,teacher_id) {
             return $http({
-                url: config.url + "/app/Organization/updateCompanyInfo",
+                url: config.url + "/app/UserCenter/updateTeacherInfo",
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token"),
-                    "company_info":obj.intro
+                    "company_info":obj.intro,
+                    "teacher_id":teacher_id
                 }
             }).then(function(data) {
                 return data.data.Response;

@@ -21,7 +21,7 @@ var teacherController = function($rootScope, $scope, $routeParams, teacherServic
     $scope.ajaxForm = function() {
         var editable = {};
         editable[$scope.input.editable_key] = $scope.input.editable_content;
-        teacherServices.update(editable).then(function(data) {
+        teacherServices.update(editable,$routeParams.teacher_id).then(function(data) {
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 errorServices.autoHide("修改成功");
                 $scope.teacher[$scope.input.editable_key] = $scope.input.editable_content;

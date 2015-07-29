@@ -7,14 +7,9 @@
 		
         <div class="section bg-red text-white text-center">
             <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="uploadTeacherAvatarController">
-                <div flow-btn class="flow-btn"></div>
-                <img flow-img="$flow.files[0]" ng-src="{{ teacher.avatar || '../images/avatar_2.png'}}" alt="">
+                <div flow-btn class="flow-btn needsclick"></div>
+                <img flow-img="$flow.files[0]" ng-src="{{ teacher.avatar }}" alt="">
             </div>
-            <!-- <div class="avatar avatar-lg" flow-init>
-                <div></div>
-                <img flow-img="$flow.files[0]"  flow-btn ng-src="{{ teacher.avatar || '../images/avatar_2.png'}}" alt="">
-                <button type="button" ng-click="upload($flow)">上传</button>
-            </div> -->
             <p></p>
             <p>姓名：{{ teacher.name }}<i ng-click="edit({'name':teacher.name})" class="kk kk-24 kk-edit-2"></i>
             </p>
