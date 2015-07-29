@@ -1,4 +1,5 @@
-var courseController = function($rootScope, $scope, $location, $routeParams, courseServices, parserServices, commentServices, localStorageService, toastServices, errorServices, config) {
+var myCourseController = function($rootScope, $scope, $location, $routeParams, courseServices, parserServices, commentServices, localStorageService, toastServices, errorServices, config) {
+    $scope.user_id = localStorageService.get("user_id")
     // course detail
     // $scope.courses = []
     courseServices.queryTutorialById($routeParams.course_id).then(function(data) {
@@ -10,7 +11,7 @@ var courseController = function($rootScope, $scope, $location, $routeParams, cou
                 start: data.course_time[0].start_time,
                 end: data.course_time[0].end_time,
                 repeater: data.course_time[0].week
-            });
+            })
             $scope.course.id = $routeParams.course_id;
         } else {
             errorServices.autoHide("服务器错误")

@@ -1,5 +1,5 @@
 var myCoursesController = function($scope, parserServices, courseServices,localStorageService, errorServices, toastServices, config) {
-    $scope.user_id = localStorageService.get("user_id")
+    $scope.user_id = localStorageService.get("user_id");
     // multiy page load
     var page = 1,
         page_size = 10,

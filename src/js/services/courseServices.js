@@ -6,7 +6,7 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 url: config.url + "/app/Course/courseToLearn",
                 method: "GET",
                 params: {
-                    token: localStorageService.get("token"),
+                    // token: localStorageService.get("token"),
                     pn: page,
                     page_size: page_size,
                     type_id: type_id
@@ -68,7 +68,7 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
                 return data.data.Response;
             })
         },
-        // 课程详情--学生用户
+        // 课程详情--学生用户/培训方
         queryTutorialById: function(id) {
             return $http({
                 url: config.url + "/app/Course/details",

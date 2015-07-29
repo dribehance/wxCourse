@@ -164,7 +164,7 @@ angular.module('WxCourse', [
         .when('/my_courses/:course_id', {
             templateUrl: 'my_course.html',
             reloadOnSearch: false,
-            // controller: historyScheduleController
+            controller: myCourseController
         })
         .when('/my_reviews', {
             templateUrl: 'my_reviews.html',

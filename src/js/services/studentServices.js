@@ -48,5 +48,18 @@ angular.module("WxCourse").factory("studentServices", function($http, localStora
                 return data.data.Response;
             })
         },
+        update: function(student) {
+            return $http({
+                url: config.url + "/app/UserCenter/updateUserInfo",
+                method: "GET",
+                params: {
+                    "token": localStorageService.get("token"),
+                    "nickname": student.name,
+                    "sex": student.sex
+                }
+            }).then(function(data) {
+                return data.data.Response;
+            })
+        }
     }
 });
