@@ -17,7 +17,7 @@ angular.module("WxCourse").factory("userServices", function($http, config, local
                 data: {
                     "telephone": telephone,
                     "password": password,
-                    "type": config.role[type],
+                    "type": transformServices.rever(config.message.role)[type],
                 }
             }).then(function(data) {
                 return data.data.Response;
@@ -130,5 +130,16 @@ angular.module("WxCourse").factory("userServices", function($http, config, local
                 return data.data.Response;
             })
         },
+        queryAuthenInfo:function() {
+            return $http({
+                url: config.url + "/app/UserCenter/identityInfo",
+                method: "GET",
+                params: {
+                    "token": localStorageService.get("token")
+                }
+            }).then(function(data) {
+                return data.data.Response;
+            })
+        }
     }
 });

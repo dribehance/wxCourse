@@ -2,6 +2,11 @@ var trainerController = function($scope, $http, $location, localStorageService, 
     trainerServices.query().then(function(data) {
         $scope.trainer = parserServices.parseTrainer(data);
         localStorageService.set("authen", $scope.trainer.status)
+        if (localStorageService.get("authen") == config.authen.PASS) {
+            $scope.is_authen = true;
+            return;
+        }
+        $scope.is_authen = false;
     });
     $scope.input = {
         "editable_key": "",
@@ -32,7 +37,7 @@ var trainerController = function($scope, $http, $location, localStorageService, 
         $location.path("/index").replace();
     }
 }
-angular.module("WxCourse").controller("singleAvatarUploadController", function($scope,localStorageService, config) {
+angular.module("WxCourse").controller("singleAvatarUploadController", function($scope, localStorageService, config) {
     $scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
         flow.opts.target = config.url + "/app/UserCenter/updateAvatar";
         flow.opts.testChunks = false;

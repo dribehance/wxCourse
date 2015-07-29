@@ -289,6 +289,14 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
                 image.name =config.imageUrl + image.name;
             });
             return images;
+        },
+        parseAuthenInfo:function(images) {
+            // console.log(images)
+            images = images || [];
+            images.map(function(image){
+                imgage = config.imageUrl + image;
+            });
+            return images;
         }
     }
 });

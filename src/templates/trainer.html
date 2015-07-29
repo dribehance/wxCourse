@@ -9,17 +9,13 @@
                 <div flow-btn flow-attrs="{accept:'image/*'}" class="flow-btn needsclick"></div>
                 <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
             </div>
-            <!-- <div class="avatar avatar-lg" flow-init>
-                <div></div>
-                <img flow-img="$flow.files[0]"  flow-btn ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
-                <button type="button" ng-click="upload($flow)">上传</button>
-            </div> -->
             <p></p>
             <p>类别：{{ trainer.type }}<i ng-click="edit({'type':trainer.type})" class="kk kk-24 kk-edit-2"></i>
             </p>
             <p>{{ trainer.name }}<i ng-click="edit({'name':trainer.name})" class="kk kk-24 kk-edit-2"></i>
             </p>
-            <a ng-href="#/authen" class="btn text-white bg-red bordered">马上认证</a>
+            <a ng-href="#/authen" class="btn text-white bg-red bordered" ng-if="!is_authen">马上认证</a>
+            <a ng-href="#/authen" class="btn text-white bg-red bordered" ng-if="is_authen">查看认证消息</a>
             <a ng-click="logout()" class="btn text-white bg-red bordered">退出</a>
         </div>
         <div class="intro">

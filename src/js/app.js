@@ -64,7 +64,10 @@ angular.module('WxCourse', [
         .when('/courses', {
             templateUrl: 'courses.html',
             reloadOnSearch: false,
-            controller: coursesController
+            controller: coursesController,
+            resolve:{
+                factory:authenInterceptor
+            }
         })
         .when('/courses/:course_id', {
             templateUrl: 'course.html',
@@ -74,7 +77,10 @@ angular.module('WxCourse', [
         .when('/teachers', {
             templateUrl: 'teachers.html',
             reloadOnSearch: false,
-            controller: teachersController
+            controller: teachersController,
+            resolve:{
+                factory:authenInterceptor
+            }
         })
         .when('/teachers/:teacher_id', {
             templateUrl: 'teacher.html',
@@ -89,7 +95,10 @@ angular.module('WxCourse', [
         .when('/messages', {
             templateUrl: 'messages.html',
             reloadOnSearch: false,
-            controller: messagesController
+            controller: messagesController,
+            resolve:{
+                factory:authenInterceptor
+            }
         })
         .when('/course_setting/:course_id', {
             templateUrl: 'course_setting.html',
