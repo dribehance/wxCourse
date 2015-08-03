@@ -33,4 +33,5 @@ module.exports = function(config) {
   config.vendor.js.push('./bower_components/humanize-duration/humanize-duration.js');
   config.vendor.js.push('./bower_components/momentjs/moment.js');
   config.vendor.js.push('./bower_components/angular-local-storage/dist/angular-local-storage.min.js');
+  config.vendor.js.push('./bower_components/date-polyfill/date-polyfill.min.js');
 };
