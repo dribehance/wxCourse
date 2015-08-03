@@ -34,8 +34,8 @@
     </div>
     <div class="section text-center" ng-if="is_authen">
         <h4 class="text-center"><p>恭喜您，完成实名认证</p>下面是您的实名信息</h4>
-        <div ng-repeat="authen in authens" class="preview-box">
-            <img ng-src="authen" alt="">
+        <div ng-repeat="authen in authens track by $index" class="preview-box">
+            <img ng-src="{{authen}}" alt="" style="margin-bottom:5px;" class="block full-width">
         </div>
     </div>
 </div>
