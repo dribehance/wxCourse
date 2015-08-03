@@ -293,8 +293,8 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
         parseAuthenInfo:function(images) {
             // console.log(images)
             images = images || [];
-            images.map(function(image){
-                imgage = config.imageUrl + image;
+            images = images.map(function(image){
+                return config.imageUrl + image;
             });
             return images;
         }

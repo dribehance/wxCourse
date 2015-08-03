@@ -51,19 +51,19 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
             })
         },
         // 更新老师资料
-        update: function(obj) {
+        update: function(obj,teacher_id) {
             for (key in obj ) {
              var state = key;
             }
             switch (state) {
                 case "type":
-                    return this.updateType(obj);
+                    return this.updateType(obj,teacher_id);
                     break;
                 case "name":
-                    return this.updateName(obj);
+                    return this.updateName(obj,teacher_id);
                     break;
                 case "intro":
-                    return this.updateIntro(obj);
+                    return this.updateIntro(obj,teacher_id);
                     break;
                 default:
                     ;
@@ -90,7 +90,7 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token"),
-                    "company_name":obj.name,
+                    "name":obj.name,
                     "teacher_id":teacher_id
                 }
             }).then(function(data) {
@@ -104,7 +104,7 @@ angular.module("WxCourse").factory("teacherServices", function($http, localStora
                 method: "GET",
                 params: {
                     "token":localStorageService.get("token"),
-                    "company_info":obj.intro,
+                    "info":obj.intro,
                     "teacher_id":teacher_id
                 }
             }).then(function(data) {
