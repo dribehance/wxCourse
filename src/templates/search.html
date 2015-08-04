@@ -1,0 +1,70 @@
+<div ui-content-for="title">
+    <input type="text" class="form-control needsclick" ng-model="page.keyword" autofocus placeholder="请输入关键字查询" style="width:75%;margin:auto;position:relative;top:-7px">
+</div>
+<div ui-content-for="backAction">
+    <span class="btn" ng-click="back()">返回</span>
+</div>
+<div ui-content-for="navbarAction">
+    <span class="btn" ng-click="queryByKeyword()">搜索</span>
+</div>
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div class="section" style="padding-bottom:0px" ng-repeat="course in courses">
+            <a ng-href="#/tutorials/{{course.id}}" class="block text-black">
+                <div class="semi-auto semi-left-50" style="min-height:75px">
+                    <div class="semi-fixed-left semi-wide-50 text-center">
+                        <div class="avatar avatar-sm">
+                            <img ng-src="{{course.teacher.avatar}}" alt="">
+                        </div>
+                        <div class="text-red text-ellipsis">{{course.teacher.name}}</div>
+                    </div>
+                    <div class="section section-condensed">
+                        <div class="row">
+                            <div class="col-xs-6 text-ellipsis text-large">{{course.name}}</div>
+                            <div class="col-xs-6 text-red text-right text-ellipsis text-large">编号：{{course.id}}</div>
+                        </div>
+                        <div class="kk-line kk-horizon bg-light-grey" style="margin:5px 0"></div>
+                        <div class="line-ellipsis line-2">
+                            简介：{{course.intro}}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div class="kk-line kk-horizon bg-light-grey" style="margin-top:5px"></div>
+            <div class="btn-group justified split-line">
+                <div class="section text-center text-sm text-black">
+                    <div>{{course.apply_amount}}</div>
+                    报名人数
+                </div>
+                <a ng-href="#/comments/{{course.id}}" class="section text-center text-sm text-black">
+                    <div>{{course.comment_amount}}</div>
+                    学员评价
+                </a>
+                <div ng-click="toggle_like(course)" ng-show="course.is_like != 1" class="section text-center text-sm text-black">
+                    <div>{{course.like_amount}}</div>
+                    赞
+                </div>
+                <div ng-click="toggle_like(course)" ng-show="course.is_like ==1" class="section text-center text-sm text-red">
+                    <div>{{course.like_amount}}</div>
+                    取消赞
+                </div>
+            </div>
+            <div class="kk-line kk-horizon bg-light-grey"></div>
+        </div>
+
+        <div class="section text-center" ng-show="courses.length>0">
+            <a ng-click="loadMore()" class="btn btn-default">{{page.message}}</a>
+        </div>
+        <div class="section text-center" ng-if="!recents.length>0 && !courses.length>0">
+            <p>最近无搜索记录</p>
+        </div>
+        <div class="section text-center" ng-if="recents.length>0 && !courses.length>0">
+            <p>最近搜索记录</p>
+			<p class="text-primary" ng-repeat="recent in recents track by $index" ng-click="queryByRecord(recent)">{{recent}}</p>
+            <div class="text-center" ng-click="clear()">清空搜索记录</div>
+        </div>
+        <div class="section text-center" ng-if="page.dirty && courses.length==0 && page.keyword !=''">
+            <p>找不到-<span class="text-red">{{page.keyword}}</span>-对应的记录</p>
+        </div>
+    </div>
+</div>

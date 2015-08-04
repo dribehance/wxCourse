@@ -190,6 +190,11 @@ angular.module('WxCourse', [
             reloadOnSearch: false,
             controller: consultController
         })
+        .when('/search', {
+            templateUrl: 'search.html',
+            reloadOnSearch: false,
+            controller: searchController
+        })
         .otherwise({
             redirectTo: "/index"
         });
