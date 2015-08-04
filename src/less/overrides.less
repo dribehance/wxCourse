@@ -64,3 +64,21 @@ a:active,a:focus,button:active,button:focus,.btn.focus,.btn:focus {
 .normal {
 	font-weight: normal;
 }
+// ----------------------------modal   ---------------------------- //
+.modal-dialog.scrollable-dialog {
+    margin: 0;
+    height: 100%;
+    position: relative;
+    .modal-content {
+    	height: 100%;
+    }
+    .modal-body {
+    	position: absolute;
+    	top:56px;
+    	left: 0;
+    	right: 0;
+    	bottom: 0;
+    	overflow-x: hidden;
+    	overflow-y: scroll;
+    }
+}
