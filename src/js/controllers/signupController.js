@@ -5,7 +5,7 @@ var signupController = function($rootScope, $scope, $location, $timeout, localSt
     $scope.input = {
             telephone: "",
             password: "",
-            referee: "",
+            referee: "学生",
             smscode: ""
         }
         // bind telephone and password
@@ -43,7 +43,7 @@ var signupController = function($rootScope, $scope, $location, $timeout, localSt
                 console.log("验证码" + $scope.smscode)
             })
             $scope.callbackTimer.counting = 1;
-            $scope.callbackTimer.addSeconds(5);
+            $scope.callbackTimer.addSeconds(30);
         }
         // error handler
     $scope.errormsg = "";

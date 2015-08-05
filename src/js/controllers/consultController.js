@@ -5,7 +5,7 @@ var consultController = function($rootScope, $scope, consultServices, parserServ
     $scope.ajaxForm = function() {
         consultServices.consult($scope.consult).then(function(data) {
         	if (data.code == config.request.SUCCESS) {
-        		$rootScope.back();
+        		$location.path("/index");
         	}
         	else {
         		errorServices.autoHide("服务器错误")

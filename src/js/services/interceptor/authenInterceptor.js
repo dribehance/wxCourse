@@ -6,7 +6,7 @@ var authenInterceptor = function($rootScope, $location,$timeout, $q, userService
         errorServices.autoHide(config.message.authen[localStorageService.get("authen")]);
         $timeout(function(){
             $rootScope.back();
-        },3000)
+        },300)
         defer.reject()
     }
     return defer.promise;

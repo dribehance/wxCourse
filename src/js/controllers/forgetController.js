@@ -22,7 +22,7 @@ var forgetController = function($scope, $location, $timeout, userServices, toast
                 console.log("验证码" + $scope.smscode)
             })
             $scope.callbackTimer.counting = 1;
-            $scope.callbackTimer.addSeconds(5);
+            $scope.callbackTimer.addSeconds(30);
         }
         // error handler
     $scope.nextStep = function() {
