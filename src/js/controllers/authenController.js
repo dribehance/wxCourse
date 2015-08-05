@@ -11,8 +11,13 @@ var authenController = function($scope, userServices, localStorageService, parse
         });
     }
 }
-angular.module("WxCourse").controller("authenUploadController", function($scope, localStorageService, errorServices, config) {
-
+angular.module("WxCourse").controller("authenUploadController", function($scope, $rootScope, $timeout, localStorageService, errorServices, config) {
+    $scope.$on("flow::fileSuccess", function() {
+        errorServices.autoHide("上传成功，等待审核！")
+        $timeout(function() {
+            $rootScope.back();
+        }, 2000);
+    })
     $scope.ajaxForm = function(flow) {
         if (flow.files.length > 2) {
             flow.cancel();
