@@ -41,13 +41,14 @@ var teacherController = function($rootScope, $scope, $routeParams, teacherServic
         });
     }
 }
-angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope, localStorageService, config) {
+angular.module("WxCourse").controller("uploadTeacherAvatarController", function($scope,$routeParams, localStorageService, config) {
     $scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
-        flow.opts.target = config.url + "/app/UserCenter/updateAvatar";
+        flow.opts.target = config.url + "/app/UserCenter/updateTeacherAvatar";
         flow.opts.testChunks = false;
         flow.opts.fileParameterName = "avatar";
         flow.opts.query = {
-            "token": localStorageService.get("token")
+            "token": localStorageService.get("token"),
+            "teacher_id": $routeParams.teacher_id,
         }
         flow.upload();
     })
