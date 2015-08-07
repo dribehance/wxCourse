@@ -18,8 +18,11 @@
             </div>
             <div class="kk-line kk-horizon"></div>
         </div>
-        <div class="section text-center">
+        <div class="section text-center" ng-if="messages.length>0">
             <a ng-click="loadMore()" class="btn btn-default">{{load_more_message}}</a>
+        </div>
+        <div class="section text-center" ng-if="messages.length==0">
+            暂无消息列表
         </div>
 	</div>
 </div>

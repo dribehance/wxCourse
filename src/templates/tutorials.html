@@ -55,8 +55,11 @@
             <div class="kk-line kk-horizon bg-light-grey"></div>
         </div>
 
-        <div class="section text-center">
+        <div class="section text-center" ng-if="courses.length>0">
             <a ng-click="loadMore()" class="btn btn-default">{{page.message}}</a>
+        </div>
+        <div class="section text-center" ng-if="courses.length==0">
+            暂无课程列表
         </div>
     </div>
     <div class="scrollable-footer" ng-show="is_student">

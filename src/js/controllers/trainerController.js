@@ -39,7 +39,7 @@ var trainerController = function($scope, $http, $location, localStorageService, 
 }
 angular.module("WxCourse").controller("singleAvatarUploadController", function($scope, localStorageService, config) {
     $scope.$on("flow::filesSubmitted", function(event, flow, flowFile) {
-        flow.opts.target = config.url + "/app/UserCenter/updateAvatar";
+        flow.opts.target = config.url + "/app/UserCenter/updateCompanyAvatar";
         flow.opts.testChunks = false;
         flow.opts.fileParameterName = "avatar";
         flow.opts.query = {

@@ -90,8 +90,11 @@
                 </div>
             </div>
             <div class="kk-line kk-horizon"></div>
-            <div class="section text-center">
+            <div class="section text-center" ng-if="comments.length>0">
                 <a ng-click="loadMore()" class="btn btn-default">{{load_more_message}}</a>
+            </div>
+            <div class="section text-center" ng-if="comments.length==0">
+                暂无评论
             </div>
         </div>
     </div>

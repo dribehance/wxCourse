@@ -17,7 +17,7 @@ var tutorialsController = function($scope, localStorageService, parserServices, 
     $scope.page = {
         number: 1,
         size: 10,
-        type_id: 1,
+        type_id: "",
         no_more: false,
         message: "点击加载更多"
     }
@@ -51,10 +51,14 @@ var tutorialsController = function($scope, localStorageService, parserServices, 
                 errorServices.autoHide("服务器错误")
                 return;
             }
+            data.types = data.types.slice(0,4)
+            if (data.types.length > 0 ) {
+                $scope.types = data.types;
+                // $scope.page.type_id = $scope.types[0].type_id;
+            }
             if (data.courses.list.length > 0) {
                 $scope.page.message = "点击加载更多";
                 $scope.courses = $scope.courses.concat(parserServices.parseCourses(data.courses.list));
-                $scope.types = data.types;
                 $scope.page.number++;
             } else {
                 $scope.page.no_more = true;

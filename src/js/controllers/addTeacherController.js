@@ -2,11 +2,13 @@ var addTeacherController = function($scope, teacherServices, courseServices, par
     $scope.teacher = new _m_teacher();
 
 }
-angular.module("WxCourse").controller("teacherUploadController", function($rootScope,$scope,config,localStorageService) {
+angular.module("WxCourse").controller("teacherUploadController", function($rootScope,$scope,$timeout,config,localStorageService,toastServices) {
     $scope.$on("flow::fileSuccess",function(file, message, chunk){
-    	$rootScope.back();
+        toastServices.hide()
+        $rootScope.back();
     })
     $scope.ajaxForm = function(flow) {
+        toastServices.show();
     	flow.opts.target = config.url + "/app/Organization/addTeacher";
         flow.opts.testChunks = false;
         flow.opts.fileParameterName = "avatar";
