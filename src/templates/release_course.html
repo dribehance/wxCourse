@@ -2,254 +2,255 @@
 <div ui-content-for="backAction">
     <span class="btn" ng-click="back()">返回</span>
 </div>
-<div class="scrollable">
-    <div class="scrollable-content">
-        <form name="releaseForm" ng-submit="ajaxForm(this)">
-
-            <!-- 课程名称 -->
-            <div class="course-name">
-                <div class="section">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+<div style="height:100%;overflow:auto;-webkit-overflow-scrolling: touch;">
+    <form name="releaseForm" ng-submit="ajaxForm(this)">
+        <!-- 课程名称 -->
+        <div class="course-name">
+            <div class="section">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">课程名称</span>
-                        </span>
-                        <input type="text" name="course_name" class="form-control flat full-width text-right" ng-model="course.name" required placeholder="请输入课程名称">
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    </span>
+                    <input type="text" name="course_name" class="form-control flat full-width text-right" ng-model="course.name" required placeholder="请输入课程名称">
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程容量 -->
-            <div class="course-capacity">
-                <div class="section course-capacity">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程容量 -->
+        <div class="course-capacity">
+            <div class="section course-capacity">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">满班人数</span>
-                        </span>
-                        <input type="text" name="capacity" class="form-control flat full-width text-right" ng-model="course.capacity" ng-pattern="/^[0-9]+$/" required placeholder="请输入满班人数">
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    </span>
+                    <input type="text" name="capacity" class="form-control flat full-width text-right" ng-model="course.capacity" ng-pattern="/^[0-9]+$/" required placeholder="请输入满班人数">
+                    <span class="error text-red" ng-show="(releaseForm.capacity.$dirty && releaseForm.capacity.$invalid)">满班人数必须为整数</span>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程总节数 -->
-            <div class="course-section">
-                <div class="section course-section">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程总节数 -->
+        <div class="course-section">
+            <div class="section course-section">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">课程节数</span>
-                        </span>
-                        <input type="text" name="section" class="form-control flat full-width text-right" ng-model="course.section" ng-pattern="/^[0-9]+$/" required placeholder="请输入课程节数">
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    </span>
+                    <input type="text" name="section" class="form-control flat full-width text-right" ng-model="course.section" ng-pattern="/^[0-9]+$/" required placeholder="请输入课程节数">
+                    <span class="error text-red" ng-show="(releaseForm.section.$dirty && releaseForm.section.$invalid)">课程节数必须为整数</span>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程培训类别 -->
-            <div class="course-type">
-                <div class="section">
-                    <div class="semi-auto semi-left-70 semi-right-40" ui-toggle="dropdown">
-                        <span class="semi-wide-70 semi-fixed-left">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程培训类别 -->
+        <div class="course-type">
+            <div class="section">
+                <div class="semi-auto semi-left-70 semi-right-40" ui-toggle="dropdown">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">培训类别</span>
-                        </span>
-                        <div class="form-control flat full-width text-right">{{ course.type.name || "语文"}}</div>
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
+                    </span>
+                    <div class="form-control flat full-width text-right">{{ course.type.name || "语文"}}</div>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
                     <i class="kk kk-dropdown kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
-                <div ui-state="dropdown" ui-default="0" ui-show="dropdown" ui-turn-off="dropdown" ui-outer-click="Ui.turnOff('dropdown')" ui-outer-click-if="Ui.active('dropdown')">
-                    <div ng-repeat="course_type in course_types">
-                        <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type.name==course_type.name}">
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div ui-state="dropdown" ui-default="0" ui-show="dropdown" ui-turn-off="dropdown" ui-outer-click="Ui.turnOff('dropdown')" ui-outer-click-if="Ui.active('dropdown')">
+                <div ng-repeat="course_type in course_types">
+                    <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type.name==course_type.name}">
                         <input type="radio" ng-model="course.type" ng-value="course_type" class="hide">{{course_type.name}}</label>
                     <div class="kk-line kk-horizon bg-white"></div>
-                    </div>
-                    
                 </div>
             </div>
-            <!-- 授课老师 -->
-            <div class="course-teacher">
-                <div class="section" ng-click="choose()">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+        </div>
+        <!-- 授课老师 -->
+        <div class="course-teacher">
+            <div class="section" ng-click="choose()">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                             <span class="btn section-wide">授课老师</span>
-                        </span>
-                        <div class="form-control flat full-width text-right">{{ course.teacher.name || "请选择"}}</div>
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
+                    </span>
+                    <div class="form-control flat full-width text-right text-red">{{ course.teacher.name || "必选"}}</div>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
                     <i class="kk kk-right-arrow kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程起止时间 -->
-            <div class="course-date">
-                <div class="section section-wide bg-light-grey">
-                    <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
-                        <span class="semi-fixed-left text-red">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程起止时间 -->
+        <div class="course-date">
+            <div class="section section-wide bg-light-grey">
+                <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
+                    <span class="semi-fixed-left text-red">
                     <div class="kk-line kk-vertical"></div>
                     课程起止时间
                 </span>
-                        <div class="text-right">无限</div>
-                        <div class="semi-fixed-right semi-wide-40 text-center">
-                            <input type="checkbox" ng-model="course.endless" ng-true-value="0" ng-false-value="1">
-                        </div>
+                    <div class="text-right">无限</div>
+                    <div class="semi-fixed-right semi-wide-40 text-center">
+                        <input type="checkbox" ng-model="course.endless" ng-true-value="0" ng-false-value="1">
                     </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
-                <div class="section text-center" ng-if="course.endless == 1">
-                    <div class="col-xs-5 section-wide">
-                        <input type="date" name="from" ng-model="course.from" required class="form-control section-wide">
-                    </div>
-                    <div class="col-xs-2"><span class="btn section-wide">到</span>
-                    </div>
-                    <div class="col-xs-5 section-wide">
-                        <input type="date" name="to" ng-model="course.to" min="{{course.from}}" required class="form-control section-wide">
-                    </div>
-                </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程重复频率 -->
-            <div class="course-repeat">
-                <div class="section section-wide bg-light-grey">
-                    <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
-                        <span class="semi-fixed-left text-red">
+            <div class="kk-line kk-horizon"></div>
+            <div class="section text-center" ng-if="course.endless == 1">
+                <div class="col-xs-5 section-wide">
+                    <input type="date" name="from" ng-model="course.from" required class="form-control section-wide">
+                </div>
+                <div class="col-xs-2"><span class="btn section-wide">到</span>
+                </div>
+                <div class="col-xs-5 section-wide">
+                    <input type="date" name="to" ng-model="course.to" min="{{course.from}}" required class="form-control section-wide">
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程重复频率 -->
+        <div class="course-repeat">
+            <div class="section section-wide bg-light-grey">
+                <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
+                    <span class="semi-fixed-left text-red">
                     <div class="kk-line kk-vertical"></div>
                     课程重复频率
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
-                <div class="section text-center">
-                    <div class="col-xs-4">
-                        <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='0'}">
-                            <input type="radio" ng-model="course.repeat" value="0" class="hide">每天</label>
-                    </div>
-                    <div class="col-xs-4">
-                        <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='1'}">
-                            <input type="radio" ng-model="course.repeat" value="1" class="hide">每周</label>
-                    </div>
-                    <div class="col-xs-4">
-                        <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='2'}">
-                            <input type="radio" ng-model="course.repeat" value="2" class="hide">每月</label>
-                    </div>
-                </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 上课时间 -->
-            <div class="course-time">
-                <div class="section section-wide bg-light-grey">
-                    <div class="semi-auto semi-left-40 semi-right-40">
-                        <span class="semi-fixed-left text-red">
+            <div class="kk-line kk-horizon"></div>
+            <div class="section text-center">
+                <div class="col-xs-4">
+                    <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='0'}">
+                        <input type="radio" ng-model="course.repeat" value="0" class="hide">每天</label>
+                </div>
+                <div class="col-xs-4">
+                    <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='1'}">
+                        <input type="radio" ng-model="course.repeat" value="1" class="hide">每周</label>
+                </div>
+                <div class="col-xs-4">
+                    <label class="btn btn-default block full-width" ng-class="{'active':course.repeat=='2'}">
+                        <input type="radio" ng-model="course.repeat" value="2" class="hide">每月</label>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 上课时间 -->
+        <div class="course-time">
+            <div class="section section-wide bg-light-grey">
+                <div class="semi-auto semi-left-40 semi-right-40">
+                    <span class="semi-fixed-left text-red">
                     <div class="kk-line kk-vertical"></div>
                     上课时间
                 </span>
-                        <div class="semi-fixed-right semi-wide-80 text-center">
-                            <i class="kk kk-24 kk-reduce" ng-show="course.time.length>1" ng-click="removeTime()">-</i>
-                            <i class="kk kk-24 kk-add" ng-show="course.time.length<7" ng-click="addTime()"></i>
-                        </div>
+                    <div class="semi-fixed-right semi-wide-80 text-center">
+                        <i class="kk kk-24 kk-reduce" ng-show="course.time.length>1" ng-click="removeTime()">-</i>
+                        <i class="kk kk-24 kk-add" ng-show="course.time.length<7" ng-click="addTime()"></i>
                     </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
-                <!-- 按天重复 -->
-                <div class="repeat-day" ng-if="course.repeat == 0">
-                    <div class="section text-center" ng-repeat="time in course.time">
-                        <div class="col-xs-6 section-wide text-center">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                        <div class="col-xs-6 section-wide text-center">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                    </div>
-                </div>
-                <!-- 按周重复 -->
-                <div class="repeat-week" ng-if="course.repeat == 1">
-                    <div class="section text-center" ng-repeat="time in course.time">
-                        <div class="col-xs-4 section-wide">
-                            <select name="week" id="week" class="form-control" ng-init="time.week='周一'" ng-model="time.week" ng-options="week for week in weeks" required placeholder="选择日期"></select>
-                        </div>
-                        <div class="col-xs-4 text-center section-wide">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                        <div class="col-xs-4 text-center section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                    </div>
-                </div>
-                <!-- 按月重复 -->
-                <div class="repeat-month" ng-if="course.repeat == 2">
-                    <div class="section text-center" ng-repeat="time in course.time">
-                        <div class="col-xs-4 section-wide">
-                            <select name="month" id="month" class="form-control" ng-init="time.month='1号'" ng-model="time.month" ng-options="month for month in months" required placeholder="选择日期"></select>
-                        </div>
-                        <div class="col-xs-4 text-center section-wide">
-                            <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                        <div class="col-xs-4 text-center section-wide">
-                            <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide" style="display:inline-block">
-                        </div>
-                    </div>
-                </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 上课地址 -->
-            <div class="course-capacity">
-                <div class="section course-capacity">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+            <div class="kk-line kk-horizon"></div>
+            <!-- 按天重复 -->
+            <div class="repeat-day" ng-if="course.repeat == 0">
+                <div class="section text-center" ng-repeat="time in course.time">
+                    <div class="col-xs-6 section-wide text-center">
+                        <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                    <div class="col-xs-6 section-wide text-center">
+                        <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                </div>
+            </div>
+            <!-- 按周重复 -->
+            <div class="repeat-week" ng-if="course.repeat == 1">
+                <div class="section text-center" ng-repeat="time in course.time">
+                    <div class="col-xs-4 section-wide">
+                        <select name="week" id="week" class="form-control" ng-init="time.week='周一'" ng-model="time.week" ng-options="week for week in weeks" required placeholder="选择日期"></select>
+                    </div>
+                    <div class="col-xs-4 text-center section-wide">
+                        <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                    <div class="col-xs-4 text-center section-wide">
+                        <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                </div>
+            </div>
+            <!-- 按月重复 -->
+            <div class="repeat-month" ng-if="course.repeat == 2">
+                <div class="section text-center" ng-repeat="time in course.time">
+                    <div class="col-xs-4 section-wide">
+                        <select name="month" id="month" class="form-control" ng-init="time.month='1号'" ng-model="time.month" ng-options="month for month in months" required placeholder="选择日期"></select>
+                    </div>
+                    <div class="col-xs-4 text-center section-wide">
+                        <input type="time" name="start_time" ng-model="time.start_time" placeholder="请选择课程开始时间" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                    <div class="col-xs-4 text-center section-wide">
+                        <input type="time" name="end_time" ng-model="time.end_time" placeholder="请选择课程结束时间" min="{{time.start_time}}" required class="form-control section-wide needsclick" style="display:inline-block">
+                    </div>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 上课地址 -->
+        <div class="course-capacity">
+            <div class="section course-capacity">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">上课地址</span>
-                        </span>
-                        <input type="text" name="address" class="form-control flat full-width text-right" ng-model="course.address" placeholder="请输入上课地址">
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    </span>
+                    <input type="text" name="address" class="form-control flat full-width text-right" required ng-model="course.address" placeholder="请输入上课地址">
+                    <span class="error text-red" ng-show="(releaseForm.address.$dirty && releaseForm.address.$invalid)">必填</span>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 费用标准 -->
-            <div class="course-capacity">
-                <div class="section course-capacity">
-                    <div class="semi-auto semi-left-70 semi-right-40">
-                        <span class="semi-wide-70 semi-fixed-left">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 费用标准 -->
+        <div class="course-capacity">
+            <div class="section course-capacity">
+                <div class="semi-auto semi-left-70 semi-right-40">
+                    <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">费用标准</span>
-                        </span>
-                        <input type="text" name="money" class="form-control flat full-width text-right" ng-model="course.money" placeholder="请输入费用标准">
-                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
+                    </span>
+                    <input type="text" name="money" class="form-control flat full-width text-right" required ng-model="course.money" placeholder="请输入费用标准">
+                    <span class="error text-red" ng-show="(releaseForm.money.$dirty && releaseForm.money.$invalid)">必填</span>
+                    <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <!-- 课程简介 -->
-            <div class="course-repeat">
-                <div class="section section-wide bg-light-grey">
-                    <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
-                        <span class="semi-fixed-left text-red">
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <!-- 课程简介 -->
+        <div class="course-repeat">
+            <div class="section section-wide bg-light-grey">
+                <div class="semi-auto semi-left-40 semi-right-40 text-ellipsis">
+                    <span class="semi-fixed-left text-red">
                     <div class="kk-line kk-vertical"></div>
                     课程简介
                 </span>
-                    </div>
                 </div>
-                <div class="kk-line kk-horizon"></div>
-                <div class="section text-center">
-                    <textarea name="intro" id="intro" rows="8" class="form-control full-width block" ng-model="course.intro" required placeholder="请输入简介"></textarea>
-                </div>
-                <div class="kk-line kk-horizon"></div>
             </div>
-            <div class="section">
-                <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid || course.teacher.id ==''">发布</button>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section text-center">
+                <textarea name="intro" id="intro" rows="8" class="form-control full-width block" ng-model="course.intro" required placeholder="请输入简介"></textarea>
+                <span class="error text-red" ng-show="(releaseForm.intro.$dirty && releaseForm.intro.$invalid)">必填</span>
             </div>
-        </form>
-    </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="section">
+            <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid || course.teacher.id ==''">发布</button>
+        </div>
+    </form>
 </div>
 <div ui-content-for="modals">
     <div class="modal modal-overlay" ui-if='teachers_panel' ui-state='teachers_panel'>
@@ -261,7 +262,6 @@
                 </div>
                 <div class="modal-body">
                     <div ng-repeat="teacher in teachers">
-
                         <div class="section section-wide block" ng-click="select(teacher)">
                             <div class="semi-auto semi-right-50 semi-left-50" style="min-height:51px">
                                 <div class="semi-fixed-left semi-wide-50">

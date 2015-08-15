@@ -66,4 +66,11 @@ var releaseCourseController = function($rootScope, $scope, toastServices, parser
             }
         })
     }
+    // harmful code
+    $scope.focus = function(){
+        // alert("d")
+    }
+    $scope.click = function(obj) {
+        // alert("click")
+    }
 }
