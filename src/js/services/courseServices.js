@@ -313,6 +313,18 @@ angular.module("WxCourse").factory("courseServices", function($http, transformSe
             }).then(function(data) {
                 return data.data.Response;
             })
+        },
+        release_check:function (){
+            return $http({
+                // by dribehance <dribehance.kksdapp.com>
+                url: config.url + "/app/Course/hasTeachers",
+                method: "GET",
+                params: angular.extend({}, config.common_params, {
+                    "token":localStorageService.get("token")
+                })
+            }).then(function(data) {
+                return data.data.Response;
+            });
         }
     }
 });

@@ -1,4 +1,4 @@
-var tutorialsController = function($scope, localStorageService, parserServices, courseServices, errorServices, toastServices, config) {
+var tutorialsController = function($scope,$rootScope, localStorageService, parserServices, courseServices, errorServices, toastServices, config) {
     // $scope.like = false;
     $scope.toggle_like = function(course) {
         courseServices.toggleLike(course).then(function(data) {
@@ -17,12 +17,13 @@ var tutorialsController = function($scope, localStorageService, parserServices, 
     $scope.page = {
         number: 1,
         size: 10,
-        type_id: "",
+        type_id: $rootScope.type_id ||   "",
         no_more: false,
         message: "点击加载更多"
     }
     $scope.courses = [];
     $scope.queryByType = function(type_id) {
+        $rootScope.type_id = type_id;
         if ($scope.page.type_id == type_id) {
             return;
         }

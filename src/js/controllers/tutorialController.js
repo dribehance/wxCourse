@@ -10,7 +10,8 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
         }
         courseServices.joinin($routeParams.tutorial_id).then(function(data) {
             if (data.code == config.request.SUCCESS) {
-                $rootScope.back();
+                errorServices.autoHide("报名成功")
+                $scope.course.is_apply = 1;
             } else {
                 errorServices.autoHide("服务器错误")
             }
@@ -19,8 +20,10 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
     };
     // course detail
     // $scope.courses = []
+    toastServices.show();
     courseServices.queryTutorialById($routeParams.tutorial_id).then(function(data) {
         if (data.code == config.request.SUCCESS) {
+            toastServices.hide();
             $scope.course = parserServices.parseCourse(data);
             $scope.course.from = data.start_day;
             $scope.course.to = data.end_day;
@@ -29,7 +32,6 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
                 end: data.course_time[0].end_time,
                 repeater: data.course_time[0].week
             })
-            console.log()
         } else {
             errorServices.autoHide("服务器错误")
         }

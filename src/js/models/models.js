@@ -47,7 +47,7 @@ var _m_course = function() {
     // is_apply 0:未申请 1:已申请
     return {
         "id": "",
-        "name": "小学语文",
+        "name": "",
         "type": new _m_course_type(),
 
         "capacity": "",

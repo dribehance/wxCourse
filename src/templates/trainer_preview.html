@@ -1,0 +1,63 @@
+<!-- by dribehance <dribehance.kksdapp.com> -->
+<div ui-content-for="title">{{ trainer.name }}</div>
+<div ui-content-for="navbarAction"></div>
+<div ui-content-for="backAction">
+	<span class="btn" ng-click="back()">返回</span>
+</div>
+<div class="scrollable">
+	<div class="scrollable-content">
+		
+        <div class="section bg-red text-white text-center">
+            <div class="avatar avatar-lg" flow-init="{singleFile:true}" ng-controller="singleAvatarUploadController">
+                <div flow-btn flow-attrs="{accept:'image/*'}" class="flow-btn needsclick"></div>
+                <img flow-img="$flow.files[0]" ng-src="{{ trainer.avatar || '../images/avatar_2.png'}}" alt="">
+            </div>
+            <p></p>
+            <p>类别：{{ trainer.type }}</p>
+            <p>{{ trainer.name }}</p>
+            <a class="btn text-white bg-red bordered" ng-if="is_authen">已认证</a>
+        </div>
+        <div class="intro">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">简介</span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+            <div class="section">{{ trainer.intro }}</div>
+        </div>
+        <div class="kk-line kk-horizon"></div>
+        <div class="address">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">地址：</span>
+                    <span>{{ trainer.address }}</span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="contact">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">联系人：</span>
+                    <span>{{ trainer.contact }}</span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+        <div class="address">
+            <div class="section section-wide section-sm">
+                <div class="semi-auto semi-right-40 text-ellipsis">
+                    <div class="kk-line kk-vertical"></div>
+                    <span class="text-red">联系方式：</span>
+                    <span>{{ trainer.telephone }}</span>
+                </div>
+            </div>
+            <div class="kk-line kk-horizon"></div>
+        </div>
+    
+	</div>
+</div>

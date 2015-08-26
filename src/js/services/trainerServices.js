@@ -13,6 +13,18 @@ angular.module("WxCourse").factory("trainerServices", function($http,localStorag
                 return data.data.Response;
             })
         },
+        preview:function(id){
+            return $http({
+                // by dribehance <dribehance.kksdapp.com>
+                url: config.url + "/app/Organization/info",
+                method: "GET",
+                params: angular.extend({}, config.common_params, {
+                    "company_id":id
+                })
+            }).then(function(data) {
+                return data.data.Response;
+            });
+        },
         // 更新头像
         updateAvatar: function() {
         	return $http({

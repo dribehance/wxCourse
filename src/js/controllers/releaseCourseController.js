@@ -3,12 +3,20 @@ var releaseCourseController = function($rootScope, $scope, toastServices, parser
     $scope.course.repeat = 0;
     $scope.months = config.months;
     $scope.weeks = config.weeks;
+    $scope.releasing = false;
     courseServices.queryCourseType().then(function(data) {
         if (data.code == config.request.SUCCESS) {
             $scope.course_types = parserServices.parseCourseTypes(data.types);
             $scope.course.type = $scope.course_types[0];
         } else {
             errorServices.autoHide("服务器错误");
+        }
+    })
+    courseServices.release_check().then(function(data){
+        if(data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
+        }
+        else {
+            errorServices.show("先去添加老师才可以发布课程");        
         }
     })
     $scope.choose = function() {

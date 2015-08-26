@@ -17,7 +17,7 @@
                         <div class="col-xs-6 text-ellipsis">
                             <div class="text-red">授课老师：{{course.teacher.name}}</div>
                         </div>
-                        <div class="col-xs-6 text-ellipsis text-right">
+                        <div class="col-xs-6 text-ellipsis text-right section-wide">
                             发布：{{course.release_time}}
                         </div>
                     </div>
@@ -39,7 +39,9 @@
         <div class="section">
             <div class="row">
                 <div class="col-xs-6 text-ellipsis">
-                    培训方：{{course.trainer.name}}
+                    <a href="#/trainer_preview/{{course.trainer.id}}">
+                        培训方：{{course.trainer.name}}
+                    </a>
                 </div>
                 <div class="col-xs-6 text-ellipsis">
                     已报/满额：<span class="text-red">{{course.apply_amount}}/{{course.capacity}}</span>
@@ -103,7 +105,7 @@
             <a ng-click="joinin()" class="btn btn-danger block full-width bg-white text-red">马上报名 </a>
         </div>
         <div class="section" ng-show="course.is_apply == 1">
-            <a class="btn btn-default block full-width bg-grey text-white">报名成功，等待审核！ </a>
+            <a class="btn btn-default block full-width bg-grey text-white">报名成功，等待确认中！ </a>
         </div>
     </div>
 </div>

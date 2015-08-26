@@ -11,7 +11,7 @@
                     <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">课程名称</span>
                     </span>
-                    <input type="text" name="course_name" class="form-control flat full-width text-right" ng-model="course.name" required placeholder="请输入课程名称">
+                    <input type="text" name="course_name" class="form-control flat full-width text-right" ng-model="course.name" required placeholder="课程名称,如语文">
                     <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
@@ -26,7 +26,7 @@
                     <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">满班人数</span>
                     </span>
-                    <input type="text" name="capacity" class="form-control flat full-width text-right" ng-model="course.capacity" ng-pattern="/^[0-9]+$/" required placeholder="请输入满班人数">
+                    <input type="text" name="capacity" class="form-control flat full-width text-right" ng-model="course.capacity" ng-pattern="/^[0-9]+$/" required placeholder="满班人数,如50">
                     <span class="error text-red" ng-show="(releaseForm.capacity.$dirty && releaseForm.capacity.$invalid)">满班人数必须为整数</span>
                     <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
@@ -42,7 +42,7 @@
                     <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">课程节数</span>
                     </span>
-                    <input type="text" name="section" class="form-control flat full-width text-right" ng-model="course.section" ng-pattern="/^[0-9]+$/" required placeholder="请输入课程节数">
+                    <input type="text" name="section" class="form-control flat full-width text-right" ng-model="course.section" ng-pattern="/^[0-9]+$/" required placeholder="课程节数,如50">
                     <span class="error text-red" ng-show="(releaseForm.section.$dirty && releaseForm.section.$invalid)">课程节数必须为整数</span>
                     <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
@@ -80,7 +80,7 @@
                     <span class="semi-wide-70 semi-fixed-left">
                             <span class="btn section-wide">授课老师</span>
                     </span>
-                    <div class="form-control flat full-width text-right text-red">{{ course.teacher.name || "必选"}}</div>
+                    <div class="form-control flat full-width text-right text-red">{{ course.teacher.name || "老师必选"}}</div>
                     <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
                     <i class="kk kk-right-arrow kk-24"></i>
                 </span>
@@ -245,10 +245,10 @@
                 <textarea name="intro" id="intro" rows="8" class="form-control full-width block" ng-model="course.intro" required placeholder="请输入简介"></textarea>
                 <span class="error text-red" ng-show="(releaseForm.intro.$dirty && releaseForm.intro.$invalid)">必填</span>
             </div>
-            <div class="kk-line kk-horizon"></div>
         </div>
+        <div class="section text-center text-red" ng-show="releaseForm.$invalid || course.teacher.id =='' ">所有信息必填，填写完成才能发布课程</div>
         <div class="section">
-            <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid || course.teacher.id ==''">发布</button>
+            <button type="submit" class="btn btn-primary block full-width" ng-disabled="releaseForm.$invalid || course.teacher.id =='' || releasing">发布</button>
         </div>
     </form>
 </div>

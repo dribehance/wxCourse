@@ -33,6 +33,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             course.intro = data.info;
             course.section = data.course_count;
             course.release_time = data.publish_time || "刚刚";
+            course.show = data.show || "0";
             // type
             course.type = {
                 id: data.type_id,
@@ -46,6 +47,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             };
             // trainer
             course.trainer.name = data.company_name;
+            course.trainer.id = data.company_id;
             // comment
             course.comments = this.parseComments(data.comments);
             // apply status
@@ -268,6 +270,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             review.id = data.learn_id;
             review.by = data.course_name;
             review.name = data.course_name;
+            review.teacher_name = data.teacher_name;
             review.release_time = data.post_date;
             review.title = data.title;
             review.content = data.content;

@@ -17,7 +17,7 @@
                         <div class="col-xs-6 text-ellipsis">
                             <div class="text-red">授课老师：{{course.teacher.name}}</div>
                         </div>
-                        <div class="col-xs-6 text-ellipsis text-right">
+                        <div class="col-xs-6 text-ellipsis text-right section-wide">
                             发布：{{course.release_time}}
                         </div>
                     </div>
@@ -98,8 +98,8 @@
             </div>
         </div>
     </div>
-    <div class="scrollable-footer">
-        <div class="btn-group justified split-line">
+    <div class="scrollable-footer" ng-if="course.show == '1'">
+        <div class="btn-group justified split-line text-white">
             <a ng-href="#/course_setting/{{course.id}}" class="btn btn-navbar rectangle bg-grey text-white">课程设置</a>
             <a ng-href="#/section_schedule/{{course.id}}" class="btn btn-navbar rectangle bg-grey text-white">进度管理</a>
             <a ng-href="#/payments/{{course.id}}" class="btn btn-navbar rectangle bg-grey text-white">学员信息</a>

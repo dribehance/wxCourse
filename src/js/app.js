@@ -38,6 +38,11 @@ angular.module('WxCourse', [
                 factory: trainerOnlyInterceptor
             }
         })
+        .when('/trainer_preview/:company_id', {
+            templateUrl: 'trainer_preview.html',
+            reloadOnSearch: false,
+            controller: trainerPreviewController
+        })
         .when('/student', {
             templateUrl: 'student.html',
             reloadOnSearch: false,
@@ -198,7 +203,7 @@ angular.module('WxCourse', [
         .otherwise({
             redirectTo: "/index"
         });
-        $httpProvider.interceptors.push('tokenInterceptor');
+        // $httpProvider.interceptors.push('tokenInterceptor');
 
 }).run(function(appServices) {
     // init event such as routechangestart...

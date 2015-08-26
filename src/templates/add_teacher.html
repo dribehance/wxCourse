@@ -5,7 +5,6 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div flow-init="{singleFile:true}" ng-controller="teacherUploadController">
-
             <!-- 头像 -->
             <div class="teacher-avatar">
                 <div class="section" style="min-height:55px;">
@@ -18,7 +17,6 @@
                                 <img ng-src="../images/avatar_3.png" ng-show="!$flow.files.length" alt="">
                                 <img flow-img="$flow.files[0]" alt="">
                             </div>
-
                         </div>
                         <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-right-arrow kk-24"></i>
@@ -43,20 +41,41 @@
                 <div class="kk-line kk-horizon"></div>
             </div>
             <!-- 培训类别 -->
-            <div class="teacher-type">
+            <div class="course-type">
+                <div class="section">
+                    <div class="semi-auto semi-left-70 semi-right-40" ui-toggle="dropdown">
+                        <span class="semi-wide-70 semi-fixed-left">
+                    <span class="btn section-wide">培训类别</span>
+                        </span>
+                        <div class="form-control flat full-width text-right">{{ course.type.name || "语文"}}</div>
+                        <span class="semi-wide-40 semi-fixed-right semi-icon text-center">
+                    <i class="kk kk-dropdown kk-24"></i>
+                </span>
+                    </div>
+                </div>
+                <div class="kk-line kk-horizon"></div>
+                <div ui-state="dropdown" ui-default="0" ui-show="dropdown" ui-turn-off="dropdown" ui-outer-click="Ui.turnOff('dropdown')" ui-outer-click-if="Ui.active('dropdown')">
+                    <div ng-repeat="course_type in course_types">
+                        <label class="block btn btn-lg text-left text-small" ng-class="{'text-red':course.type.name==course_type.name}">
+                            <input type="radio" ng-model="course.type" ng-value="course_type" class="hide">{{course_type.name}}</label>
+                        <div class="kk-line kk-horizon bg-white"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="teacher-type">
                 <div class="section teacher-type">
                     <div class="semi-auto semi-left-70 semi-right-40">
                         <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">培训类别</span>
                         </span>
-                        <input type="text" name="type" class="form-control flat full-width text-right" ng-model="teacher.type" required placeholder="请输入昵称">
+                        <input type="text" name="type" class="form-control flat full-width text-right" ng-model="teacher.type" required placeholder="请输入培训类别">
                         <span class="semi-wide-40 semi-fixed-right semi-icon text-center text-red">
                     <i class="kk kk-edit kk-24"></i>
                 </span>
                     </div>
                 </div>
                 <div class="kk-line kk-horizon"></div>
-            </div>
+            </div> -->
             <!-- 老师简介 -->
             <div class="intro">
                 <div class="section section-wide">
@@ -67,13 +86,12 @@
                 </div>
                 <div class="kk-line kk-horizon"></div>
                 <div class="section">
-                	<textarea name="" id="" rows="8" class="form-control full-width block" ng-model="teacher.intro" required></textarea>
+                    <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="teacher.intro" required></textarea>
                 </div>
             </div>
             <div class="section">
                 <button type="button" class="btn btn-primary block full-width" ng-disabled="!$flow.files.length>0|| teacher.name=='' || teacher.intro == '' || teacher.type ==''" ng-click="ajaxForm($flow)">新增</button>
             </div>
-
         </div>
     </div>
 </div>

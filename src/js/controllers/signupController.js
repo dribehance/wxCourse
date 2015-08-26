@@ -55,13 +55,17 @@ var signupController = function($rootScope, $scope, $location, $timeout, localSt
         }
         toastServices.show();
         userServices.register($scope.input.telephone, $scope.input.password, $scope.input.referee).then(function(data) {
-           
+            toastServices.hide();
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
-                toastServices.hide();
-                errorServices.autoHide("注册成功，跳转登录！")
-                $timeout(function() {
-                    $location.path("/signin").replace();
-                }, 2000)
+                localStorageService.set("token", data.token);
+                localStorageService.set("role", data.type);
+                localStorageService.set("user_id", data.user_id);
+                if (localStorageService.get("role") == config.role.STUDENT) {
+                    $location.path("/student").replace();
+                } else {
+                    $location.path("/trainer").replace();
+                }
+
             } else {
                 errorServices.autoHide("注册失败");
             }
