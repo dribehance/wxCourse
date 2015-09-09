@@ -48,6 +48,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             // trainer
             course.trainer.name = data.company_name;
             course.trainer.id = data.company_id;
+            course.user_id = data.user_id || "INVALID";
             // comment
             course.comments = this.parseComments(data.comments);
             // apply status

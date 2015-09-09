@@ -19,6 +19,7 @@ var coursesController = function($scope, parserServices, courseServices, errorSe
             $scope.load_more_message = "点击加载更多";
             if (data.code == config.request.SUCCESS && data.status == config.response.SUCCESS) {
                 $scope.courses = $scope.courses.concat(parserServices.parseCourses(data.Courses.list));
+                $scope.user_id = data.user_id;
             }
             if (page < data.Courses.totalPage) {
                 page++;

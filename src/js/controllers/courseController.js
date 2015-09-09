@@ -1,7 +1,7 @@
 var courseController = function($rootScope, $scope, $location, $routeParams, courseServices, parserServices, commentServices, localStorageService, toastServices, errorServices, config) {
     // course detail
     // $scope.courses = []
-    courseServices.queryTutorialById($routeParams.course_id).then(function(data) {
+    courseServices.queryTutorialById($routeParams.course_id,$routeParams.user_id).then(function(data) {
         if (data.code == config.request.SUCCESS) {
             $scope.course = parserServices.parseCourse(data);
             $scope.course.from = data.start_day;

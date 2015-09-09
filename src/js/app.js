@@ -74,7 +74,7 @@ angular.module('WxCourse', [
                 factory:authenInterceptor
             }
         })
-        .when('/courses/:course_id', {
+        .when('/courses/:course_id/:user_id', {
             templateUrl: 'course.html',
             reloadOnSearch: false,
             controller: courseController
