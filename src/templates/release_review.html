@@ -5,7 +5,7 @@
 <div class="scrollable">
     <div class="scrollable-content">
         <div flow-init class="multi-upload" ng-controller="multiUploaderController">
-            <div class="section">
+            <!-- <div class="section">
                 <div class="semi-auto semi-left-70 semi-right-40">
                     <span class="semi-wide-70 semi-fixed-left">
                     <span class="btn section-wide">标题</span>
@@ -15,7 +15,7 @@
                     <i class="kk kk-edit kk-24"></i>
                 </span>
                 </div>
-            </div>
+            </div> -->
             <div class="kk-line kk-horizon"></div>
             <div class="section">
                 <div class="semi-auto semi-left-70 semi-right-40">
@@ -30,7 +30,7 @@
             </div>
             <div class="kk-line kk-horizon"></div>
             <div class="section text-right">
-            	<button type="button" class="btn btn-primary" ng-disabled="!$flow.files.length>0|| review.title=='' || review.content=='' " ng-click="ajaxForm($flow)">发布</button>
+            	<button type="button" class="btn btn-primary" ng-disabled="!$flow.files.length>0 || review.content=='' " ng-click="ajaxForm($flow)">发布</button>
             </div>
             <div>
             	<div ng-repeat="file in $flow.files" class="preview-box">

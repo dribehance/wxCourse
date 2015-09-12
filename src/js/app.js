@@ -203,7 +203,7 @@ angular.module('WxCourse', [
         .otherwise({
             redirectTo: "/index"
         });
-        // $httpProvider.interceptors.push('tokenInterceptor');
+        $httpProvider.interceptors.push('tokenInterceptor');
 
 }).run(function(appServices) {
     // init event such as routechangestart...

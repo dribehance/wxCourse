@@ -16,7 +16,7 @@ angular.module("WxCourse").controller("multiUploaderController", function($scope
         flow.opts.testChunks = false;
         flow.opts.query = {
             "token": localStorageService.get("token"),
-            "title": $scope.review.title,
+            "title": $scope.review.title || "",
             "content": $scope.review.content,
             "user_id": $scope.student_id,
             "course_id": $scope.course_id

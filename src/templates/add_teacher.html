@@ -86,11 +86,11 @@
                 </div>
                 <div class="kk-line kk-horizon"></div>
                 <div class="section">
-                    <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="teacher.intro" required></textarea>
+                    <textarea name="" id="" rows="8" class="form-control full-width block" ng-model="teacher.intro" required placeholder="简介"></textarea>
                 </div>
             </div>
-            <div class="section">
-                <button type="button" class="btn btn-primary block full-width" ng-disabled="!$flow.files.length>0|| teacher.name=='' || teacher.intro == '' || teacher.type ==''" ng-click="ajaxForm($flow)">新增</button>
+            <div class="section text-white">
+                <button type="button" class="btn btn-primary block full-width" ng-disabled="!$flow.files.length>0|| teacher.name=='' || teacher.intro == '' || course.type.name ==''" ng-click="ajaxForm($flow)">新增</button>
             </div>
         </div>
     </div>

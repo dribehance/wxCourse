@@ -1,5 +1,7 @@
 <!-- by dribehance <dribehance.kksdapp.com> -->
-<div ui-content-for="title">{{ trainer.name }}</div>
+<div ui-content-for="title">
+    <div style="display: inline-block;max-width: 165px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ trainer.name }}</div>
+</div>
 <div ui-content-for="navbarAction"></div>
 <div ui-content-for="backAction">
 	<span class="btn" ng-click="back()">返回</span>

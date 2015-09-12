@@ -69,4 +69,7 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
         })
     }
     $scope.loadMore();
+    $rootScope.share_weixin = function () {
+        $rootScope.share_tips = false;
+    }
 }

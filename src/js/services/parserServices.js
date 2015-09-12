@@ -252,7 +252,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
         },
         parseMessage: function(data) {
             var message = new _m_message();
-            message.by = data.user_name;
+            message.by = data.user_name || "匿名";
             message.release_time = data.post_time;
             message.content = data.content;
             message.entrance_time = "";

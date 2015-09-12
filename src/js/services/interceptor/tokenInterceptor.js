@@ -27,7 +27,6 @@ angular.module("WxCourse").factory("tokenInterceptor", function($window, $locati
                 return response;
             }
             // server response
-            console.log(response)
             if (response.data.Response.code == config.request.TOKEN_INVALID) {
                 console.log("TOKEN_INVALID")
                 localStorageService.remove("token");

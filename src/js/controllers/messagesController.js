@@ -1,7 +1,7 @@
 var messagesController = function($scope, parserServices, messageServices, errorServices, toastServices, config) {
     // multiy page load
     var page = 1,
-        page_size = 1,
+        page_size = 10,
         no_more = false;
     $scope.messages = [];
     $scope.load_more_message = "点击加载更多";

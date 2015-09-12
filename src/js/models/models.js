@@ -185,7 +185,7 @@ var _m_teacher = function() {
         "name": "",
         "avatar": "",
         "type": "",
-        "intro": "暂未填写",
+        "intro": "",
     }
 }
 var _m_message = function() {

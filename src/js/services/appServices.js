@@ -6,6 +6,9 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
     var routeChangeSuccess = function(e, currentRoute, prevRoute) {
         toastServices.hide();
         errorServices.hide();
+        if (prevRoute && prevRoute.$$route.templateUrl == "course.html" && currentRoute.$$route.templateUrl == "tutorial.html") {
+            $rootScope.share_tips = true;
+        }
         navBarHandler(e, currentRoute, prevRoute);
     }
     var routeChangeError = function(e, currentRoute, prevRoute){
@@ -48,6 +51,7 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
             // init navbar 
             $rootScope.hasNavbarBottom = true;
             $rootScope.hasNavbarTop = true;
+            $rootScope.share_tips = false;
             // backaction
             $rootScope.back = function() {
                 $window.history.back();
