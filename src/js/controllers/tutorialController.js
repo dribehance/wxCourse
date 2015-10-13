@@ -9,10 +9,14 @@ var tutorialController = function($rootScope, $scope, $location, $routeParams, c
             return;
         }
         courseServices.joinin($routeParams.tutorial_id).then(function(data) {
-            if (data.code == config.request.SUCCESS) {
+            if (data.code == config.request.SUCCESS && data.status == 1) {
                 errorServices.autoHide("报名成功")
                 $scope.course.is_apply = 1;
-            } else {
+                return;
+            } 
+            if (data.status == 2) {
+                errorServices.autoHide("人数已满，不能报名")
+            }else {
                 errorServices.autoHide("服务器错误")
             }
         });

@@ -68,4 +68,10 @@ var tutorialsController = function($scope,$rootScope, localStorageService, parse
         })
     }
     $scope.loadMore();
+    if (localStorageService.get("token")) {
+        $scope.is_login = true;
+    }
+    else {
+        $scope.is_login = false;
+    }
 }

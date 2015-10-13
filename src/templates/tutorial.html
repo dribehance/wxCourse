@@ -3,7 +3,7 @@
     <span class="btn" ng-click="back()">返回</span>
 </div>
 <div ui-content-for="navbarAction">
-    <span class="btn" style="color:#ee3a53">关注我们</span>
+    <a ng-href="http://mp.weixin.qq.com/s?__biz=MzI3NjAxODY0Mw==&mid=207629656&idx=1&sn=c80ee2c9de6661e22229149e8da23c12&scene=18#rd" class="btn" style="color:#ee3a53">关注我们</a>
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
@@ -104,11 +104,14 @@
         </div>
     </div>
     <div class="scrollable-footer">
-        <div class="section" ng-show="course.is_apply != 1">
+        <div class="section" ng-show="course.is_apply != 1 && (course.capacity > course.apply_amount)">
             <a ng-click="joinin()" class="btn btn-danger block full-width bg-white text-red">马上报名 </a>
         </div>
         <div class="section" ng-show="course.is_apply == 1">
             <a class="btn btn-default block full-width bg-grey text-white">报名成功，等待确认中！ </a>
+        </div>
+        <div class="section" ng-show="course.is_apply != 1 && !(course.capacity > course.apply_amount)">
+            <a class="btn btn-default block full-width bg-grey text-white">已满额</a>
         </div>
     </div>
 </div>

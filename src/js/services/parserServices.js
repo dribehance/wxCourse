@@ -276,6 +276,7 @@ angular.module("WxCourse").factory("parserServices", function(SharedState, trans
             review.title = data.title;
             review.content = data.content;
             review.images = this.parseReviewImages(data.pic);
+            review.course_id = data.course_id;
             return review;
         },
         parseReviews: function(data) {
