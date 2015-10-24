@@ -17,7 +17,7 @@ angular.module("WxCourse").factory("appServices", function($rootScope, $location
     }
     var navBarHandler = function(e, currentRoute, prevRoute) {
         // navbar top
-        var _navbars_t = ["/me"];
+        var _navbars_t = ["/me","/about","/consult"];
         if (_navbars_t.contains($location.path())) {
             // SharedState.turnOff("navbarTop");
             $rootScope.hasNavbarTop = false;
