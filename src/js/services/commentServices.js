@@ -22,8 +22,8 @@ angular.module("WxCourse").factory("commentServices", function($http, localStora
                 params: {
                     "token": localStorageService.get("token"),
                     "course_id": comment.course_id,
-                    "user_id": comment.user_id,
-                    "coutent": comment.content
+                    // "user_id": comment.user_id,
+                    "content": comment.content
                 }
             }).then(function(data) {
                 return data.data.Response;
